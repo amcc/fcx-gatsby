@@ -7,88 +7,15 @@ import Img from "gatsby-image"
 
 import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
 import { rhythm } from "../utils/typography"
-import HeroImage from "../components/heroimage"
-import { FaChevronDown } from "react-icons/fa"
-
+// import HeroImage from "../components/heroimage";
+// import { FaChevronDown } from "react-icons/fa";
 // import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import styled from "@emotion/styled"
-
-import Three from "../components/three"
+// import styled from "@emotion/styled";
 
 import { GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
 
-const HeroContainer = styled.div`
-  position: relative;
-`
-const HeroStyles = css``
-const HeroTextOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-`
-const HeroTextOverlayInner = styled.div`
-  height: 60%;
-  width: 100%;
-  color: white;
-  a {
-    color: white;
-  }
-  margin-top: 3vw;
-  padding: ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)};
-  font-size: 90%;
-  font-weight: 300;
-  h1 {
-    /* font-size: 160%; */
-    color: white;
-  }
-  mix-blend-mode: difference;
-
-  @media (min-width: 40em) {
-    padding: ${rhythm(1 / 2)} 20vw 0 0;
-    font-size: 150%;
-    h1 {
-      font-size: 150%;
-    }
-    h3 {
-      padding-left: 0;
-    }
-  }
-  @media (min-width: 52em) {
-    padding: ${rhythm(1 / 2)} 20vw 0 0;
-    h1 {
-      font-size: 160%;
-    }
-    font-size: 150%;
-  }
-  @media (min-width: 64em) {
-    padding: ${rhythm(1 / 2)} 30vw 0 0;
-    font-size: 160%;
-    h1 {
-      font-size: 180%;
-      font-weight: 300;
-    }
-  }
-`
-const DownArrow = styled.div`
-  width: 100%;
-  /* height: 30%; */
-  text-align: center;
-  font-size: 270%;
-  @media (min-width: 40em) {
-    font-size: 400%;
-  }
-`
-const DownArrowButton = css`
-  color: white;
-  /* opacity: 0.8; */
-  cursor: pointer;
-  height: 100%;
-`
-
-class IndexPage extends Component {
+class Articles extends Component {
   constructor(props) {
     super(props)
     // this.state = {
@@ -118,42 +45,10 @@ class IndexPage extends Component {
   }
 
   render() {
-    const data = this.props.data
+    const data = this.props.data;
     return (
       <Layout>
-        <SEO title="Home" />
-
-        <HeroContainer css={HeroStyles}>
-          <HeroImage
-            image={
-              data.allNodeIssue.edges[0].node.relationships.field_issue_media[0]
-                .relationships.field_media_image.localFile.childImageSharp.fluid
-            }
-          />
-          <HeroTextOverlay>
-            <HeroTextOverlayInner>
-              <h1>Fashion Communication Exchange</h1>
-              <Three />
-              {/* <p>
-                Nullam nec ante sit amet mi imperdiet commodo vel mollis nulla.
-                Morbi sit amet lacinia augue, a vestibulum turpis. Nullam
-                gravida in turpis sed luctus. Aliquam id porta magna. Sed
-                viverra ultricies sem, auctor accumsan neque. Donec suscipit
-                nulla eget turpis rhoncus cursus. Morbi hendrerit sodales lacus,
-                nec sagittis orci bibendum id. Morbi blandit, nisl at feugiat
-                tristique, ante elit laoreet neque, vitae auctor enim tortor
-                vulputate dolor. In a fermentum est, et hendrerit purus.
-              </p> */}
-            </HeroTextOverlayInner>
-            <DownArrow>
-              <FaChevronDown
-                // size={40}
-                css={DownArrowButton}
-                onClick={this.handleOnClick}
-              />
-            </DownArrow>
-          </HeroTextOverlay>
-        </HeroContainer>
+        <SEO title="Issues" />
 
         <Flex
           // mx={[0, -1, -2]}
@@ -161,7 +56,7 @@ class IndexPage extends Component {
           css={css`
             margin-top: ${rhythm(2)};
           `}
-          ref={this.myDivToFocus}
+           ref={this.myDivToFocus}
         >
           <Box
             width={1}
@@ -179,7 +74,7 @@ class IndexPage extends Component {
             >
               <div key={node.id}>
                 <Link to={`${node.fields.slug}`}>
-                  {node.relationships.field_issue_media.map(
+                  {/* {node.relationships.field_issue_media.map(
                     ({ relationships }) => (
                       <Img
                         key={
@@ -192,7 +87,7 @@ class IndexPage extends Component {
                         }
                       />
                     )
-                  )}
+                  )} */}
                   <h3>{node.title}</h3>
                 </Link>
                 <Flex
@@ -227,9 +122,6 @@ class IndexPage extends Component {
                           )}
                           <h3 css={GridHeader}>{node.title}</h3>
                         </Link>
-
-                        {/* <div dangerouslySetInnerHTML={{ __html: node.excerpt }} /> */}
-                        {/* <PostIcons node={node} /> */}
                       </div>
                     </Box>
                   ))}
@@ -243,7 +135,7 @@ class IndexPage extends Component {
   }
 }
 
-export default IndexPage
+export default Articles
 
 export const pageQuery = graphql`
   query {

@@ -10,7 +10,7 @@ const ArticleTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <h1><Link to={`/`}>Articles</Link> / {data.nodeArticle.title}</h1>
+      <h1><Link to={`/articles/`}>Articles</Link> / {data.nodeArticle.title}</h1>
       <div
         dangerouslySetInnerHTML={{ __html: data.nodeArticle.body.processed }}
       />

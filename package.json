@@ -22,9 +22,16 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
+    "react-icons": "^3.7.0",
+    "react-three-fiber": "^2.1.2",
     "react-typography": "^0.16.19",
+    "smoothscroll-polyfill": "^0.4.4",
+    "three": "^0.104.0",
+    "typeface-lato": "^0.0.54",
     "typography": "^0.16.19",
+    "typography-theme-alton": "^0.16.19",
     "typography-theme-twin-peaks": "^0.16.19"
   },
   "devDependencies": {

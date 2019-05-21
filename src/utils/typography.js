@@ -1,16 +1,14 @@
 import Typography from "typography"
-import twinPeaks from "typography-theme-twin-peaks"
-// import { underline } from "ansi-colors";
+import alton from "typography-theme-alton"
+import { underline } from "ansi-colors";
 
-// twinPeaks.omitGoogleFont = true
-// twinPeaks.headerLineHeight = 1.1
-twinPeaks.overrideThemeStyles = () => {
+alton.omitGoogleFont = true
+alton.headerLineHeight = 1.1
+alton.overrideThemeStyles = () => {
   return {
     a: {
       color: `black`,
       textDecoration: `underline`,
-      textShadow: `none`,
-      backgroundImage: `none`,
     },
     h1: {
       lineHeight: 1,
@@ -19,11 +17,33 @@ twinPeaks.overrideThemeStyles = () => {
   }
 }
 
-// twinPeaks.baseFontSize = "16px"
-// twinPeaks.headerFontFamily = ['Lato', 'sans-serif']
+alton.baseFontSize = "16px"
+// alton.baseLineHeight = 1
+alton.headerFontFamily = ['Lato', 'sans-serif']
+// fairyGateTheme.bodyFontFamily = ['Dosis', 'sans-serif']
+// alton.googleFonts = [
+//   {
+//     name: 'Lato',
+//     styles: [
+//       '400',
+//       '700'
+//     ],
+//   }
+// ]
 
 
-const typography = new Typography(twinPeaks)
+// let bodyFontFamily = ["Roboto", "Helvetica", "Arial", "sans-serif"];
+// let headerFontFamily = bodyFontFamily;
+
+// const typography = new Typography({
+//     baseFontSize    : "16px",
+//     baseLineHeight  : 1,
+//     omitGoogleFont  : true,
+//     headerFontFamily: headerFontFamily,
+//     bodyFontFamily  : bodyFontFamily
+// });
+
+const typography = new Typography(alton)
 
 export const { rhythm, scale } = typography
 export default typography

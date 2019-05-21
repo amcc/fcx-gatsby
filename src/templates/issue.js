@@ -10,7 +10,7 @@ const IssueTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <h1><Link to={`/`}>Issues</Link> / {data.nodeIssue.title}</h1>
+      <h1><Link to={`/issues/`}>Issues</Link> / {data.nodeIssue.title}</h1>
       <div
         dangerouslySetInnerHTML={{ __html: data.nodeIssue.body.processed }}
       />
