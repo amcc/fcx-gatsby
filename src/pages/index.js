@@ -14,7 +14,8 @@ import { FaChevronDown } from "react-icons/fa"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
-import Three from "../components/three"
+// import Three from "../components/three"
+import HeroThree from "../components/heroThree"
 
 import { GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
 
@@ -87,6 +88,13 @@ const DownArrowButton = css`
   cursor: pointer;
   height: 100%;
 `
+const ThreeStyle = css`
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+`
 
 class IndexPage extends Component {
   constructor(props) {
@@ -119,21 +127,19 @@ class IndexPage extends Component {
 
   render() {
     const data = this.props.data
+    console.log(data)
     return (
       <Layout>
         <SEO title="Home" />
 
         <HeroContainer css={HeroStyles}>
-          <HeroImage
-            image={
-              data.allNodeIssue.edges[0].node.relationships.field_issue_media[0]
-                .relationships.field_media_image.localFile.childImageSharp.fluid
-            }
-          />
+          <HeroThree />
+
+          
           <HeroTextOverlay>
             <HeroTextOverlayInner>
               <h1>Fashion Communication Exchange</h1>
-              <Three />
+
               {/* <p>
                 Nullam nec ante sit amet mi imperdiet commodo vel mollis nulla.
                 Morbi sit amet lacinia augue, a vestibulum turpis. Nullam
@@ -323,6 +329,14 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+
+    placeholderImage: file(relativePath: { eq: "seats.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
