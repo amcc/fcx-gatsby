@@ -42,7 +42,7 @@ const HomeVideo = ({ video }) => {
         autoPlay 
         loop
         muted
-        playsinline
+        playsInline
       />
     </CustomHeroImage>
   )
