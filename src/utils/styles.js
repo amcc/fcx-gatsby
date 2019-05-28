@@ -9,20 +9,20 @@ export const HeaderOffset = "70";
 export const HeaderOffsetMobile = "61";
 
 export const Accent = `SlateGray`;
-export const SubtleAccent = `Cornsilk`;
+export const SubtleAccent = `#eee`;
 
 const BoxShadowH = `0px`;
 const BoxShadowV = `3px`;
 const BoxShadowBlur = `5px`;
 const BoxShadowSpread = `3px`;
 //112,128,144 = SlateGrey
-export const BoxShadowColour = `rgba(112,128,144,0.19)`;
+export const BoxShadowColour = `rgba(112,128,144,0.05)`;
 export const BoxShadow = `box-shadow: ${BoxShadowH} ${BoxShadowV} ${BoxShadowBlur} ${BoxShadowSpread} ${BoxShadowColour}`;
 
-const RadiusTL = `4px`;
-const RadiusTR = `4px`;
-const RadiusBR = `4px`;
-const RadiusBL = `4px`;
+const RadiusTL = `3px`;
+const RadiusTR = `3px`;
+const RadiusBR = `3px`;
+const RadiusBL = `3px`;
 export const BorderRadius = `border-radius: ${RadiusTL} ${RadiusTR} ${RadiusBR} ${RadiusBL}`;
 
 const GridHeaderSize = `120%`;

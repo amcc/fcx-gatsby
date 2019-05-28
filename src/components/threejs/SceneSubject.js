@@ -20,7 +20,7 @@ export default scene => {
     );
 
     group.add(subjectMesh);
-    group.add(subjectWireframe);
+    // group.add(subjectWireframe);
     scene.add(group);
 
     group.rotation.z = Math.PI/4;

@@ -135,7 +135,6 @@ class IndexPage extends Component {
         <HeroContainer css={HeroStyles}>
           <HeroThree />
 
-          
           <HeroTextOverlay>
             <HeroTextOverlayInner>
               <h1>Fashion Communication Exchange</h1>
@@ -176,46 +175,64 @@ class IndexPage extends Component {
             // css={GridBoxContainer}
           />
 
-          {data.allNodeIssue.edges.map(({ node }) => (
-            <Box
-              width={1}
-              px={[1, 1, 2]}
-              key={`box-${node.id}`}
-              // css={GridBoxContainer}
-            >
-              <div key={node.id}>
-                <Link to={`${node.fields.slug}`}>
-                  {node.relationships.field_issue_media.map(
-                    ({ relationships }) => (
-                      <Img
-                        key={
-                          relationships.field_media_image.localFile
-                            .childImageSharp.id
-                        }
-                        fluid={
-                          relationships.field_media_image.localFile
-                            .childImageSharp.fluid
-                        }
-                      />
-                    )
-                  )}
-                  <h3>{node.title}</h3>
-                </Link>
+          {data.allNodeIssue.edges.map(({ node, i }) => (
+            <>
+              <Box
+                width={[1, 1 / 2]}
+                px={[1, 1, 2]}
+                key={`issuebox-${node.id}`}
+                // css={GridBoxContainer}
+              >
+                <div key={`box-div-${node.id}`}>
+                  <div>Current Issue</div>
+                  <Link to={`${node.fields.slug}`}>
+                    {node.relationships.field_issue_media.map(
+                      ({ relationships }) => (
+                        <Img
+                          key={
+                            relationships.field_media_image.localFile
+                              .childImageSharp.id
+                          }
+                          fluid={
+                            relationships.field_media_image.localFile
+                              .childImageSharp.fluid
+                          }
+                        />
+                      )
+                    )}
+                    <h3>{node.title}</h3>
+                  </Link>
+                </div>
+              </Box>
+              <Box
+                width={[1, 1 / 2]}
+                px={[1, 1, 2]}
+                key={`articlebox-${node.id}`}
+              >
+                <div 
+                css={css`
+                  padding-left: ${rhythm(1/3)};
+                `}
+                >Latest Articles</div>
                 <Flex
                   // mx={[0, -1, -2]}
+                  key={`box-div-flex-${node.id}`}
                   flexWrap="wrap"
                   css={css`
-                    margin-top: ${rhythm(2)};
+                    /* margin-top: ${rhythm(2)}; */
                   `}
                 >
                   {node.relationships.node__article.map((node, i) => (
                     <Box
-                      width={[1 / 2, 1 / 3]}
+                      width={[1 / 2, 1 / 2]}
                       px={[1, 1, 2]}
-                      key={`box-${node.id}`}
+                      key={`box-div-flex-box-${node.id}`}
                       css={GridBoxContainer}
                     >
-                      <div css={GridBox} key={node.id}>
+                      <div
+                        css={GridBox}
+                        key={`box-div-flex-box-div-${node.id}`}
+                      >
                         <Link to={`${node.path.alias}`}>
                           {node.relationships.field_article_media.map(
                             ({ relationships }) => (
@@ -240,8 +257,8 @@ class IndexPage extends Component {
                     </Box>
                   ))}
                 </Flex>
-              </div>
-            </Box>
+              </Box>
+            </>
           ))}
         </Flex>
       </Layout>

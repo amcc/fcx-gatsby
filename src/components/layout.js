@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 // import "./layout.css"
-import {GlobalStyle} from "../utils/styles"
+import {GlobalStyle, MainWrapper} from "../utils/styles"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -28,21 +28,14 @@ const Layout = ({ children }) => (
       <>
       <GlobalStyle />
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
+        <MainWrapper>
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}
             {` `}
             <a href="https://www.gatsbyjs.org">Fashion Communication Exchange</a>
           </footer>
-        </div>
+        </MainWrapper>
       </>
     )}
   />
