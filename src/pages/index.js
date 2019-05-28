@@ -7,7 +7,7 @@ import Img from "gatsby-image"
 
 import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
 import { rhythm } from "../utils/typography"
-import HeroImage from "../components/heroimage"
+import HomeVideo from "../components/homeVideo"
 import { FaChevronDown } from "react-icons/fa"
 
 // import styled from "@emotion/styled"
@@ -15,9 +15,13 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 // import Three from "../components/three"
-import HeroThree from "../components/heroThree"
+// import HeroThree from "../components/heroThree"
 
 import { GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
+
+import {
+  Video
+} from "cloudinary-react"
 
 const HeroContainer = styled.div`
   position: relative;
@@ -38,9 +42,10 @@ const HeroTextOverlayInner = styled.div`
     color: white;
   }
   margin-top: 3vw;
-  padding: ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)};
-  font-size: 90%;
-  font-weight: 300;
+  
+  padding: 10rem 20vw 0 20vw;
+      font-size: 300%;
+  font-weight: 800;
   h1 {
     /* font-size: 160%; */
     color: white;
@@ -48,30 +53,28 @@ const HeroTextOverlayInner = styled.div`
   mix-blend-mode: difference;
 
   @media (min-width: 40em) {
-    padding: ${rhythm(1 / 2)} 20vw 0 0;
     font-size: 150%;
     h1 {
-      font-size: 150%;
+      font-size: 300%;
     }
     h3 {
       padding-left: 0;
     }
   }
-  @media (min-width: 52em) {
-    padding: ${rhythm(1 / 2)} 20vw 0 0;
+  /* @media (min-width: 52em) {
+
     h1 {
-      font-size: 160%;
+      font-size: 300%;
     }
     font-size: 150%;
   }
   @media (min-width: 64em) {
-    padding: ${rhythm(1 / 2)} 30vw 0 0;
     font-size: 160%;
     h1 {
-      font-size: 180%;
-      font-weight: 300;
+      font-size: 300%;
+      font-weight: 800;
     }
-  }
+  } */
 `
 const DownArrow = styled.div`
   width: 100%;
@@ -133,9 +136,20 @@ class IndexPage extends Component {
         <SEO title="Home" />
 
         <HeroContainer css={HeroStyles}>
-          <HeroThree />
+          {/* <HeroThree /> */}
+         <HomeVideo 
+          video={`Comp_2_2_c6wxxb`}
+          css={css`
+            mix-blend-mode: difference;
+            margin-top: -80px;
+          `}
+         />
 
-          <HeroTextOverlay>
+          <HeroTextOverlay
+          
+          css={css`
+            mix-blend-mode: difference;
+          `}>
             <HeroTextOverlayInner>
               <h1>Fashion Communication Exchange</h1>
 
@@ -209,11 +223,13 @@ class IndexPage extends Component {
                 px={[1, 1, 2]}
                 key={`articlebox-${node.id}`}
               >
-                <div 
-                css={css`
-                  padding-left: ${rhythm(1/3)};
-                `}
-                >Latest Articles</div>
+                <div
+                  css={css`
+                    padding-left: ${rhythm(1 / 3)};
+                  `}
+                >
+                  Latest Articles
+                </div>
                 <Flex
                   // mx={[0, -1, -2]}
                   key={`box-div-flex-${node.id}`}

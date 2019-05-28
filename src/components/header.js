@@ -290,7 +290,7 @@ const Header = class extends React.Component {
           // onUnpin={() => console.log("unpinned")}
           // wrapperStyle={{ marginBottom: rhythm(1) }}
           style={{
-            background: "rgb(255,255,255)",
+            background: "rgba(255,255,255,0.4)",
             boxShadow: "1px 1px 15px rgba(0,0,0,0.1)",
             zIndex: 1000
           }}

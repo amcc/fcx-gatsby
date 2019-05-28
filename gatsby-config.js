@@ -31,15 +31,15 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true
+        omitGoogleFont: true,
       },
     },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        // baseUrl: `http://fcxdrupal.test/`,
-        baseUrl: `http://fcx.mcclymont.co/`,
+        baseUrl: `http://fcxdrupal.test/`,
+        // baseUrl: `http://fcx.mcclymont.co/`,
         // apiBase: `jsonapi`,
         // links: {
         //   article: "http://fcxdrupal.test/jsonapi/node/article",
