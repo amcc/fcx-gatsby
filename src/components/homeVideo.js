@@ -39,9 +39,7 @@ const HomeVideo = ({ video }) => {
         cloudName="amcc"
         publicId={video}
         // controls="true"
-        loop
-        autoPlay
-        muted
+        autoplay loop muted playsinline
       />
     </CustomHeroImage>
   )

@@ -46,6 +46,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "mobile": "gatsby develop -o -H $HOSTNAME -p 8000",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
