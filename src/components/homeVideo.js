@@ -87,14 +87,9 @@ const HomeVideo = ({ video }) => {
         `}
         dangerouslySetInnerHTML={{
           __html: `
-        <video
-          loop
-          muted
-          autoplay
-          playsinline
-        >
+        <video autoplay loop muted playsinline>
           <source src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4" type="video/mp4">
-        </video>,
+        </video>
       `,
         }}
       />
