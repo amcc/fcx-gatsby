@@ -28,21 +28,74 @@ const CustomHeroImage = styled.div`
   }
 `
 
+// class Video extends React.Component {
+//   shouldComponentUpdate(nextProps) {
+//     return nextProps.src !== this.props.src;
+//   }
+
+//   render() {
+//     return (
+//       <div dangerouslySetInnerHTML={{ __html: `
+//         <video
+//           loop
+//           muted
+//           autoplay
+//           playsinline
+//           src="${this.props.src}"
+//         />,
+//       ` }}></div>
+//     );
+//   }
+// }
+
 const HomeVideo = ({ video }) => {
   return (
     <CustomHeroImage>
-      <Video
-        css={css`
-          width: 100%;
-          height: auto;
-        `}
+      {/* <Video
+        // css={css`
+        //   width: 100%;
+        //   height: auto;
+        // `}
         cloudName="amcc"
         publicId={video}
         // controls="true"
         autoPlay 
         loop
-        muted
         playsInline
+        muted
+      /> */}
+      {/* <video autoPlay muted="true" loop playsInline>
+        <source
+          src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4"
+          type="video/mp4"
+        />
+      </video> */}
+
+      <div
+        css={css`
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          overflow-x: hidden;
+          video {
+            width: auto;
+            height: 100vh;
+          }
+        `}
+        dangerouslySetInnerHTML={{
+          __html: `
+        <video
+          loop
+          muted
+          autoplay
+          playsinline
+          src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4"
+        />,
+      `,
+        }}
       />
     </CustomHeroImage>
   )
