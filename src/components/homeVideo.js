@@ -51,7 +51,7 @@ const CustomHeroImage = styled.div`
 const HomeVideo = ({ video }) => {
   return (
     <CustomHeroImage>
-      <Video
+      {/* <Video
         // css={css`
         //   width: 100%;
         //   height: auto;
@@ -63,15 +63,15 @@ const HomeVideo = ({ video }) => {
         loop
         playsInline
         muted
-      />
+      /> */}
       {/* <video autoPlay muted="true" loop playsInline>
         <source
           src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4"
           type="video/mp4"
         />
-      </video>
+      </video> */}
 
-      {/* <div
+      <div
         css={css`
           display: -webkit-flex;
           display: flex;
@@ -92,7 +92,7 @@ const HomeVideo = ({ video }) => {
         </video>
       `,
         }}
-      /> */}
+      />
     </CustomHeroImage>
   )
 }
