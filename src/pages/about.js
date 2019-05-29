@@ -11,6 +11,7 @@ import { rhythm } from "../utils/typography"
 // import { FaChevronDown } from "react-icons/fa";
 // import styled from "@emotion/styled"
 import { css } from "@emotion/core"
+import HomeVideo from "../components/homeVideo"
 import {
   Image,
   Video,
@@ -58,18 +59,13 @@ class About extends Component {
 
         <h1>About</h1>
         {/* <Video publicId="Comp_2_2_c6wxxb" /> */}
-        <Video
+        <HomeVideo 
+          video={`Comp_2_2_c6wxxb`}
           css={css`
-            width: 100%;
-            height: auto;
+            mix-blend-mode: difference;
+            margin-top: -80px;
           `}
-          cloudName="amcc"
-          publicId="Comp_2_2_c6wxxb"
-          // controls="true"
-          loop="true"
-          autoplay="true"
-        >
-        </Video>
+         />
       </Layout>
     )
   }
