@@ -1,22 +1,22 @@
 import React, { Component } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
-import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
-import { rhythm } from "../utils/typography"
+// import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
+// import { rhythm } from "../utils/typography"
 // import HeroImage from "../components/heroimage";
 // import { FaChevronDown } from "react-icons/fa";
 // import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-import HomeVideo from "../components/homeVideo"
+// import { css } from "@emotion/core"
+// import HomeVideo from "../components/homeVideo"
 import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext,
+  // Image,
+  // Video,
+  // Transformation,
+  // CloudinaryContext,
 } from "cloudinary-react"
 // import styled from "@emotion/styled";
 
@@ -52,20 +52,20 @@ class About extends Component {
   }
 
   render() {
-    const data = this.props.data
+    // const data = this.props.data
     return (
       <Layout>
         <SEO title="Issues" />
 
         <h1>About</h1>
         {/* <Video publicId="Comp_2_2_c6wxxb" /> */}
-        <HomeVideo 
+        {/* <HomeVideo 
           video={`Comp_2_2_c6wxxb`}
           css={css`
             mix-blend-mode: difference;
             margin-top: -80px;
           `}
-         />
+         /> */}
       </Layout>
     )
   }

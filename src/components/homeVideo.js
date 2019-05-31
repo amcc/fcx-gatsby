@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import React from "react"
-import { rhythm } from "../utils/typography"
+// import { rhythm } from "../utils/typography"
 import styled from "@emotion/styled"
-import { Video } from "cloudinary-react"
+// import { Video } from "cloudinary-react"
 import { css } from "@emotion/core"
 import { HeaderOffset, HeaderOffsetMobile } from "../utils/styles"
 
@@ -85,10 +85,17 @@ const HomeVideo = ({ video }) => {
             height: 100vh;
           }
         `}
+      //   dangerouslySetInnerHTML={{
+      //     __html: `
+      //   <video autoplay loop muted playsinline>
+      //     <source src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4" type="video/mp4">
+      //   </video>
+      // `,
+      //   }}
         dangerouslySetInnerHTML={{
           __html: `
         <video autoplay loop muted playsinline>
-          <source src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4" type="video/mp4">
+          <source src="${video}" type="video/mp4">
         </video>
       `,
         }}

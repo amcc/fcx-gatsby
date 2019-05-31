@@ -17,16 +17,16 @@ import styled from "@emotion/styled"
 // import Three from "../components/three"
 // import HeroThree from "../components/heroThree"
 
-import { GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
+import { ArticleLink, GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
 
-import {
-  Video
-} from "cloudinary-react"
+// import { Video } from "cloudinary-react"
 
 const HeroContainer = styled.div`
   position: relative;
 `
-const HeroStyles = css``
+const HeroStyles = css`
+height: 100vh;
+`
 const HeroTextOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -42,9 +42,9 @@ const HeroTextOverlayInner = styled.div`
     color: white;
   }
   margin-top: 3vw;
-  
+
   padding: 10rem 20vw 0 20vw;
-      font-size: 300%;
+  font-size: 300%;
   font-weight: 800;
   h1 {
     /* font-size: 160%; */
@@ -91,13 +91,6 @@ const DownArrowButton = css`
   cursor: pointer;
   height: 100%;
 `
-const ThreeStyle = css`
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  height: 100%;
-  width: 100%;
-`
 
 class IndexPage extends Component {
   constructor(props) {
@@ -129,27 +122,31 @@ class IndexPage extends Component {
   }
 
   render() {
-    const data = this.props.data
-    console.log(data)
+    const issues = this.props.data.allNodeIssue
+    const articles = this.props.data.allNodeArticle
+    console.log(issues)
+    console.log(articles)
+    // console.log(this.theposition)
     return (
       <Layout>
         <SEO title="Home" />
 
         <HeroContainer css={HeroStyles}>
           {/* <HeroThree /> */}
-         <HomeVideo 
-          video={`Comp_2_2_c6wxxb`}
-          css={css`
-            mix-blend-mode: difference;
-            margin-top: -80px;
-          `}
-         />
+          <HomeVideo
+            // video={`Comp_2_2_c6wxxb`}
+            video="fcxblur.mp4"
+            css={css`
+              mix-blend-mode: difference;
+              margin-top: -80px;
+            `}
+          />
 
           <HeroTextOverlay
-          
-          css={css`
-            mix-blend-mode: difference;
-          `}>
+            css={css`
+              mix-blend-mode: difference;
+            `}
+          >
             <HeroTextOverlayInner>
               <h1>Fashion Communication Exchange</h1>
 
@@ -173,110 +170,73 @@ class IndexPage extends Component {
             </DownArrow>
           </HeroTextOverlay>
         </HeroContainer>
-
-        <Flex
-          // mx={[0, -1, -2]}
-          flexWrap="wrap"
-          css={css`
-            margin-top: ${rhythm(2)};
-          `}
-          ref={this.myDivToFocus}
-        >
-          <Box
-            width={1}
-            px={[1, 1, 2]}
-            key={`box-recent-projects`}
-            // css={GridBoxContainer}
-          />
-
-          {data.allNodeIssue.edges.map(({ node, i }) => (
-            <>
-              <Box
-                width={[1, 1 / 2]}
-                px={[1, 1, 2]}
-                key={`issuebox-${node.id}`}
-                // css={GridBoxContainer}
-              >
-                <div key={`box-div-${node.id}`}>
-                  <div>Current Issue</div>
-                  <Link to={`${node.fields.slug}`}>
-                    {node.relationships.field_issue_media.map(
-                      ({ relationships }) => (
+        <Flex flexWrap="wrap" alignItems="stretch" ref={this.myDivToFocus}>
+        {articles.edges &&
+          articles.edges.map(({ node }, i) => {
+            let articleIssue = new Array()
+            node.relationships.field_issue_reference.map(({ drupal_id }, i) => {
+              articleIssue.push(drupal_id)
+            })
+            console.log('Issue = ' + issues.edges[0].node.drupal_id)
+            console.log('articleIssue = ' + articleIssue)
+            console.log(articleIssue.includes(issues.edges[0].node.drupal_id))
+            if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
+              return (
+                <Box
+                  width={[1 / 2, 1 / 3]}
+                  px={[1, 1, 2]}
+                  key={`article-box-${i}`}
+                  css={[GridBoxContainer, ArticleLink]}
+                >
+                  <Link to={`${node.path.alias}`}>
+                    <article css={GridBox} key={node.id}>
+                      {node.relationships.field_article_media && (
+                        // node.relationships.field_article_media.map(
+                        //   ({ relationships }) => (
                         <Img
                           key={
-                            relationships.field_media_image.localFile
+                            node.relationships.field_article_media[0]
+                              .relationships.field_media_image.localFile
                               .childImageSharp.id
                           }
                           fluid={
-                            relationships.field_media_image.localFile
+                            node.relationships.field_article_media[0]
+                              .relationships.field_media_image.localFile
                               .childImageSharp.fluid
                           }
                         />
                       )
-                    )}
-                    <h3>{node.title}</h3>
+                      //   )
+                      // )
+                      }
+                      <h3 css={GridHeader}>{node.title}</h3>
+                    </article>
                   </Link>
-                </div>
-              </Box>
-              <Box
-                width={[1, 1 / 2]}
-                px={[1, 1, 2]}
-                key={`articlebox-${node.id}`}
-              >
-                <div
-                  css={css`
-                    padding-left: ${rhythm(1 / 3)};
-                  `}
-                >
-                  Latest Articles
-                </div>
-                <Flex
-                  // mx={[0, -1, -2]}
-                  key={`box-div-flex-${node.id}`}
-                  flexWrap="wrap"
-                  css={css`
-                    /* margin-top: ${rhythm(2)}; */
-                  `}
-                >
-                  {node.relationships.node__article.map((node, i) => (
-                    <Box
-                      width={[1 / 2, 1 / 2]}
-                      px={[1, 1, 2]}
-                      key={`box-div-flex-box-${node.id}`}
-                      css={GridBoxContainer}
-                    >
-                      <div
-                        css={GridBox}
-                        key={`box-div-flex-box-div-${node.id}`}
-                      >
-                        <Link to={`${node.path.alias}`}>
-                          {node.relationships.field_article_media.map(
-                            ({ relationships }) => (
-                              <Img
-                                key={
-                                  relationships.field_media_image.localFile
-                                    .childImageSharp.id
-                                }
-                                fluid={
-                                  relationships.field_media_image.localFile
-                                    .childImageSharp.fluid
-                                }
-                              />
-                            )
-                          )}
-                          <h3 css={GridHeader}>{node.title}</h3>
-                        </Link>
-
-                        {/* <div dangerouslySetInnerHTML={{ __html: node.excerpt }} /> */}
-                        {/* <PostIcons node={node} /> */}
-                      </div>
-                    </Box>
-                  ))}
-                </Flex>
-              </Box>
-            </>
-          ))}
-        </Flex>
+                </Box>
+              )
+            }
+          })}
+          </Flex>
+        {/* {articles.edges.map(({ node }, i) => {
+            return (
+            <div key={i}>
+              <h3>issue</h3>
+              <p>{issues.edges[0].node.drupal_id}</p>
+              <h3>article</h3>
+              <p>{node.title}</p>
+              <p>{node.drupal_id}</p>
+              {node.relationships.field_issue_reference.map(
+                ({ drupal_id }, i) => {
+                  return (
+                    <p>
+                      issueref-<b>{drupal_id}</b>
+                    </p>
+                  )
+                }
+              )}
+            </div>
+          )
+        })} */}
       </Layout>
     )
   }
@@ -286,16 +246,24 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allNodeArticle(sort: { fields: [created], order: DESC }, limit: 4) {
+    allNodeArticle(sort: { fields: [field_date], order: DESC }, limit: 100) {
       edges {
         node {
           id
+          drupal_id
           title
           fields {
             slug
           }
+          path {
+            alias
+          }
           created
+          field_date
           relationships {
+            field_issue_reference {
+              drupal_id
+            }
             field_article_media {
               relationships {
                 field_media_image {
@@ -315,15 +283,17 @@ export const pageQuery = graphql`
       }
     }
 
-    allNodeIssue(sort: { fields: [created], order: DESC }) {
+    allNodeIssue(sort: { fields: [field_date], order: DESC }, limit: 1) {
       edges {
         node {
           id
+          drupal_id
           title
           fields {
             slug
           }
           created
+          field_date
           relationships {
             field_issue_media {
               relationships {
@@ -333,28 +303,6 @@ export const pageQuery = graphql`
                       id
                       fluid(maxWidth: 900) {
                         ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            node__article {
-              title
-              path {
-                alias
-              }
-              relationships {
-                field_article_media {
-                  relationships {
-                    field_media_image {
-                      localFile {
-                        childImageSharp {
-                          id
-                          fluid(maxWidth: 400) {
-                            ...GatsbyImageSharpFluid
-                          }
-                        }
                       }
                     }
                   }

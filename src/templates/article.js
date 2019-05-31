@@ -4,30 +4,83 @@ import React from "react"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
+import Video from "../components/video"
+import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
+import { css } from "@emotion/core"
 
 const ArticleTemplate = ({ data }) => {
-  // console.log(data)
+  console.log(data)
   return (
     <Layout>
       <SEO title="Home" />
-      <h1><Link to={`/articles/`}>Articles</Link> / {data.nodeArticle.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{ __html: data.nodeArticle.body.processed }}
-      />
-
-      {data.nodeArticle.relationships.field_article_media.map(
-        ({ relationships }) => (
-          <Img
-            key={
-              relationships.field_media_image.localFile.childImageSharp.id
-            }
-            fluid={
-              relationships.field_media_image.localFile.childImageSharp.fluid
-            }
-          />
-        )
+      <h1>
+        <Link to={`/articles/`}>Articles</Link> / {data.nodeArticle.title}
+      </h1>
+      {data.nodeArticle.body && (
+        <div
+          dangerouslySetInnerHTML={{ __html: data.nodeArticle.body.processed }}
+        />
       )}
+      <Flex flexWrap="wrap" alignItems="stretch">
+        {data.nodeArticle.relationships &&
+          data.nodeArticle.relationships.field_article_media &&
+          data.nodeArticle.relationships.field_article_media.map(
+            ({ relationships }, i) => {
+              let box = Math.ceil(Math.random()*3)
+              console.log(box)
+              return (
+                <Box
+                  p={1}
+                  fontSize={4}
+                  width={[1, 1 / box, 1 / (box + 1)]}
+                  color="white"
+                  bg="lightgrey"
+                  flex="1 1 auto"
+                  alignSelf
+                  css={css`
+                    max-height: 300px;
+                  `}
+                  key={i}
+                >
+                  <Img
+                  css={css`
+                    height: 100%;
+                    width: auto;
+                  `}
+                    key={
+                      relationships.field_media_image.localFile.childImageSharp
+                        .id
+                    }
+                    fluid={
+                      relationships.field_media_image.localFile.childImageSharp
+                        .fluid
+                    }
+                  />
+                </Box>
+              )
+            }
+          )}
 
+        {data.nodeArticle.relationships &&
+          data.nodeArticle.relationships.field_article_video &&
+          data.nodeArticle.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
+            (video, i) => (
+              <Box
+                p={5}
+                fontSize={4}
+                width={[1, 1 / 2, 1 / 2]}
+                color="white"
+                bg="magenta"
+              >
+                <Video
+                  videoSrcURL={video.field_media_oembed_video}
+                  videoTitle={video.name}
+                  key={video.id}
+                />
+              </Box>
+            )
+          )}
+      </Flex>
     </Layout>
   )
 }
@@ -42,6 +95,19 @@ export const query = graphql`
         processed
       }
       relationships {
+        field_article_video {
+          relationships {
+            bundle {
+              relationships {
+                media__remote_video {
+                  field_media_oembed_video
+                  name
+                  id
+                }
+              }
+            }
+          }
+        }
         field_article_media {
           relationships {
             field_media_image {

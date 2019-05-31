@@ -130,11 +130,22 @@ export const MarginTopPost = css`
   }
 `;
 
+export const ArticleLink = css`
+  article {
+    height: 280px;
+    position: relative;
+    h3 {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+`
+
 export const GridBoxContainer = css`
-  > div:hover {
+  article:hover {
     background: ${SubtleAccent};
   }
-  > div:active {
+  article:active {
     background: ${SubtleAccent};
   }
   transition: all 0.5s;
