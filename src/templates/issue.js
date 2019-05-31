@@ -13,7 +13,7 @@ const IssueTemplate = ({ data }) => {
       <h1>
         <Link to={`/issues/`}>Issues</Link> / {data.nodeIssue.title}
       </h1>
-      {data.nodeArticle.body && (
+      {data.nodeIssue.body && (
         <div
           dangerouslySetInnerHTML={{ __html: data.nodeIssue.body.processed }}
         />
