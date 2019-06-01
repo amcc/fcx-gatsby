@@ -56,7 +56,7 @@ const HeroTextOverlayInner = styled.div`
   /* font-size: 300%; */
   font-weight: 100;
   h1 {
-    font-size: 260%;
+    font-size: 220%;
     color: white;
   }
   mix-blend-mode: difference;
