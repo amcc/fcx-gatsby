@@ -104,7 +104,7 @@ const HomeTitleExchange = css`
 
 const DownArrow = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 5vh;
   z-index: 1000;
   width: 100%;
   /* height: 30%; */
