@@ -17,7 +17,13 @@ import styled from "@emotion/styled"
 // import Three from "../components/three"
 // import HeroThree from "../components/heroThree"
 
-import { ArticleLink, GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
+import {
+  backgroundColours,
+  ArticleLink,
+  GridBoxContainer,
+  GridBox,
+  GridHeader,
+} from "../utils/styles"
 
 // import { Video } from "cloudinary-react"
 
@@ -25,7 +31,8 @@ const HeroContainer = styled.div`
   position: relative;
 `
 const HeroStyles = css`
-height: 100vh;
+  height: 100vh;
+  margin-bottom: 20px;
 `
 const HeroTextOverlay = styled.div`
   position: absolute;
@@ -35,6 +42,8 @@ const HeroTextOverlay = styled.div`
   width: 100%;
 `
 const HeroTextOverlayInner = styled.div`
+  mix-blend-mode: difference;
+  position: relative;
   height: 60%;
   width: 100%;
   color: white;
@@ -43,50 +52,70 @@ const HeroTextOverlayInner = styled.div`
   }
   margin-top: 3vw;
 
-  padding: 10rem 20vw 0 20vw;
-  font-size: 300%;
-  font-weight: 800;
+  padding: 20vh 20vw 0 0vw;
+  /* font-size: 300%; */
+  font-weight: 100;
   h1 {
-    /* font-size: 160%; */
+    font-size: 260%;
     color: white;
   }
   mix-blend-mode: difference;
 
   @media (min-width: 40em) {
-    font-size: 150%;
+    /* font-size: 150%; */
     h1 {
-      font-size: 300%;
+      font-size: 330%;
     }
     h3 {
       padding-left: 0;
     }
   }
-  /* @media (min-width: 52em) {
-
+  @media (min-width: 52em) {
     h1 {
       font-size: 300%;
     }
     font-size: 150%;
   }
   @media (min-width: 64em) {
-    font-size: 160%;
+    /* font-size: 160%; */
     h1 {
-      font-size: 300%;
-      font-weight: 800;
+      font-size: 350%;
+      /* font-weight: 800; */
     }
-  } */
+  }
 `
+const HomeTitle = css`
+  font-weight: 100;
+  text-transform: uppercase;
+`
+
+const HomeTitleFashion = css`
+  display: block;
+  margin-left: 5vw;
+`
+const HomeTitleCommunication = css`
+  display: block;
+  margin-left: 3vw;
+`
+const HomeTitleExchange = css`
+  display: block;
+  margin-left: 16vw;
+`
+
 const DownArrow = styled.div`
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
   width: 100%;
   /* height: 30%; */
   text-align: center;
   font-size: 270%;
   @media (min-width: 40em) {
-    font-size: 400%;
+    font-size: 300%;
   }
 `
 const DownArrowButton = css`
-  color: white;
+  color: black;
   /* opacity: 0.8; */
   cursor: pointer;
   height: 100%;
@@ -139,6 +168,8 @@ class IndexPage extends Component {
             css={css`
               mix-blend-mode: difference;
               margin-top: -80px;
+              position: relative;
+              z-index: 0;
             `}
           />
 
@@ -148,7 +179,11 @@ class IndexPage extends Component {
             `}
           >
             <HeroTextOverlayInner>
-              <h1>Fashion Communication Exchange</h1>
+              <h1 css={HomeTitle}>
+                <span css={HomeTitleFashion}>Fashion</span>
+                <span css={HomeTitleCommunication}>Communication</span>
+                <span css={HomeTitleExchange}>Exchange</span>
+              </h1>
 
               {/* <p>
                 Nullam nec ante sit amet mi imperdiet commodo vel mollis nulla.
@@ -161,62 +196,74 @@ class IndexPage extends Component {
                 vulputate dolor. In a fermentum est, et hendrerit purus.
               </p> */}
             </HeroTextOverlayInner>
-            <DownArrow>
-              <FaChevronDown
-                // size={40}
-                css={DownArrowButton}
-                onClick={this.handleOnClick}
-              />
-            </DownArrow>
           </HeroTextOverlay>
+          <DownArrow>
+            <FaChevronDown
+              // size={40}
+              css={DownArrowButton}
+              onClick={this.handleOnClick}
+            />
+          </DownArrow>
         </HeroContainer>
         <Flex flexWrap="wrap" alignItems="stretch" ref={this.myDivToFocus}>
-        {articles.edges &&
-          articles.edges.map(({ node }, i) => {
-            let articleIssue = new Array()
-            node.relationships.field_issue_reference.map(({ drupal_id }, i) => {
-              articleIssue.push(drupal_id)
-            })
-            console.log('Issue = ' + issues.edges[0].node.drupal_id)
-            console.log('articleIssue = ' + articleIssue)
-            console.log(articleIssue.includes(issues.edges[0].node.drupal_id))
-            if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
-              return (
-                <Box
-                  width={[1 / 2, 1 / 3]}
-                  px={[1, 1, 2]}
-                  key={`article-box-${i}`}
-                  css={[GridBoxContainer, ArticleLink]}
-                >
-                  <Link to={`${node.path.alias}`}>
-                    <article css={GridBox} key={node.id}>
-                      {node.relationships.field_article_media && (
-                        // node.relationships.field_article_media.map(
-                        //   ({ relationships }) => (
-                        <Img
-                          key={
-                            node.relationships.field_article_media[0]
-                              .relationships.field_media_image.localFile
-                              .childImageSharp.id
-                          }
-                          fluid={
-                            node.relationships.field_article_media[0]
-                              .relationships.field_media_image.localFile
-                              .childImageSharp.fluid
-                          }
-                        />
-                      )
-                      //   )
-                      // )
-                      }
-                      <h3 css={GridHeader}>{node.title}</h3>
-                    </article>
-                  </Link>
-                </Box>
+          {articles.edges &&
+            articles.edges.map(({ node }, i) => {
+              let articleIssue = new Array()
+              node.relationships.field_issue_reference.map(
+                ({ drupal_id }, i) => {
+                  articleIssue.push(drupal_id)
+                }
               )
-            }
-          })}
-          </Flex>
+              console.log("Issue = " + issues.edges[0].node.drupal_id)
+              console.log("articleIssue = " + articleIssue)
+              console.log(articleIssue.includes(issues.edges[0].node.drupal_id))
+              if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
+                return (
+                  <Box
+                    width={[1 / 2, 1 / 3]}
+                    px={[1, 1, 2]}
+                    key={`article-box-${i}`}
+                    css={[GridBoxContainer, ArticleLink]}
+                  >
+                    <Link to={`${node.path.alias}`}>
+                      <article
+                        css={GridBox}
+                        key={node.id}
+                        css={css`
+                        background-color: '${
+                          backgroundColours[
+                            Math.floor(Math.random() * backgroundColours.length)
+                          ]
+                        }';
+                      `}
+                      >
+                        {node.relationships.field_article_media && (
+                          // node.relationships.field_article_media.map(
+                          //   ({ relationships }) => (
+                          <Img
+                            key={
+                              node.relationships.field_article_media[0]
+                                .relationships.field_media_image.localFile
+                                .childImageSharp.id
+                            }
+                            fluid={
+                              node.relationships.field_article_media[0]
+                                .relationships.field_media_image.localFile
+                                .childImageSharp.fluid
+                            }
+                          />
+                        )
+                        //   )
+                        // )
+                        }
+                        <h3 css={GridHeader}>{node.title}</h3>
+                      </article>
+                    </Link>
+                  </Box>
+                )
+              }
+            })}
+        </Flex>
         {/* {articles.edges.map(({ node }, i) => {
             return (
             <div key={i}>

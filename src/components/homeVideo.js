@@ -81,17 +81,21 @@ const HomeVideo = ({ video }) => {
           justify-content: center;
           overflow-x: hidden;
           video {
-            width: auto;
             height: 100vh;
+            width: auto;
+            @media (min-width: 40em) {
+              width: 100vw;
+              height: auto;
+            }
           }
         `}
-      //   dangerouslySetInnerHTML={{
-      //     __html: `
-      //   <video autoplay loop muted playsinline>
-      //     <source src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4" type="video/mp4">
-      //   </video>
-      // `,
-      //   }}
+        //   dangerouslySetInnerHTML={{
+        //     __html: `
+        //   <video autoplay loop muted playsinline>
+        //     <source src="https://res.cloudinary.com/amcc/video/upload/v1559078362/Comp_2_2_c6wxxb.mp4" type="video/mp4">
+        //   </video>
+        // `,
+        //   }}
         dangerouslySetInnerHTML={{
           __html: `
         <video autoplay loop muted playsinline>

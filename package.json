@@ -32,6 +32,8 @@
     "smoothscroll-polyfill": "^0.4.4",
     "three": "^0.104.0",
     "typeface-lato": "^0.0.54",
+    "typeface-open-sans": "^0.0.54",
+    "typeface-roboto": "^0.0.54",
     "typography": "^0.16.19",
     "typography-theme-alton": "^0.16.19",
     "typography-theme-twin-peaks": "^0.16.19"

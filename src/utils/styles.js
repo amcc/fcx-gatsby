@@ -140,6 +140,11 @@ export const ArticleLink = css`
     }
   }
 `
+export const backgroundColours = ['fuchsia', 'acqua', 'yellow'];
+
+export const RandomBackground = css `
+  background: ${backgroundColours[Math.floor(Math.random()*backgroundColours.length)]};
+`
 
 export const GridBoxContainer = css`
   article:hover {
@@ -157,6 +162,7 @@ export const GridBox = css`
   /* padding: 0.5rem 0; */
   margin-bottom: ${rhythm(2)};
   background: white;
+  
   ${BoxShadow};
   ${BorderRadius};
   a > div {

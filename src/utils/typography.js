@@ -1,5 +1,7 @@
 import Typography from "typography"
 import alton from "typography-theme-alton"
+// import 'typeface-roboto';
+// import 'typeface-open-sans';
 // import { underline } from "ansi-colors";
 
 alton.omitGoogleFont = true
@@ -19,7 +21,7 @@ alton.overrideThemeStyles = () => {
 
 alton.baseFontSize = "16px"
 // alton.baseLineHeight = 1
-alton.headerFontFamily = ['Lato', 'sans-serif']
+alton.headerFontFamily = ['Roboto', 'sans-serif']
 // fairyGateTheme.bodyFontFamily = ['Dosis', 'sans-serif']
 // alton.googleFonts = [
 //   {
