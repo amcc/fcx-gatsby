@@ -121,7 +121,7 @@ class IndexPage extends Component {
 
   render() {
     const data = this.props.data
-    console.log(data)
+    // console.log(data)
     // console.log(this.theposition)
     return (
       <Layout>

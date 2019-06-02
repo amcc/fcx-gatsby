@@ -57,7 +57,7 @@ const HeroTextOverlayInner = styled.div`
   /* font-size: 300%; */
   font-weight: 500;
   h1 {
-    font-size: 220%;
+    font-size: 200%;
     color: white;
   }
   mix-blend-mode: difference;
@@ -154,8 +154,8 @@ class IndexPage extends Component {
   render() {
     const issues = this.props.data.allNodeIssue
     const articles = this.props.data.allNodeArticle
-    console.log(issues)
-    console.log(articles)
+    // console.log(issues)
+    // console.log(articles)
     // console.log(this.theposition)
     return (
       <Layout>

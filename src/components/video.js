@@ -1,7 +1,7 @@
 import React from "react"
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => {
-  console.log(videoSrcURL)
+  // console.log(videoSrcURL)
   //https://stackoverflow.com/questions/25661182/embed-youtube-video-refused-to-display-in-a-frame-because-it-set-x-frame-opti
   
   // decide whether we have youtube or vimeo

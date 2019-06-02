@@ -49,7 +49,7 @@ const collapse = css`
 
 const expand = css`
   /* background: ${veryLightGray}; */
-  width: 6em;
+  width: 8em;
   margin-left: -1.6em;
   padding-left: 1.6em;
   + ${SearchIcon} {
