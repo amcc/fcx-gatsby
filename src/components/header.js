@@ -37,6 +37,11 @@ const homeTitle = css`
   padding-top: 0.5rem;
   font-size: 200%;
   @media (min-width: 40em) {
+    font-size: 200%;
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+  @media (min-width: 52em) {
     font-size: 230%;
     padding-left: 0;
     padding-top: 1.3rem;
@@ -310,7 +315,7 @@ const Header = class extends React.Component {
           <header css={headerHeight}>
             <MainWrapper>
               <Flex flexWrap="wrap">
-                <Box width={[1 / 3, 1 / 6]}>
+                <Box width={[1 / 5, 1 / 5, 2 / 12]}>
                   {/* Half width */}
                   <h1 css={homeTitle}>
                     <Link
@@ -326,7 +331,7 @@ const Header = class extends React.Component {
                 </Box>
 
                 <Box
-                  width={[1/3, 9 / 12]}
+                  width={[1 / 5, 1 / 5, 8 / 12]}
                   css={css`
                     text-align: left;
                     @media (min-width: 40em) {
@@ -413,7 +418,7 @@ const Header = class extends React.Component {
                     </div>
                   </nav>
                 </Box>
-                <Box width={[1 / 3, 1 / 12]}>
+                <Box width={[3 / 5, 3 / 5, 2 / 12]}>
                   <div css={SearchBox}>
                     <Search collapse indices={searchIndices} />
                   </div>

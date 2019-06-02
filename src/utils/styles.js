@@ -228,6 +228,10 @@ export const SearchBox = css`
   margin-top: 0.8rem;
   left: -5rem;
   @media (min-width: 40em) {
-    margin-top: 2.1rem;
+    margin-top: 1.4rem;
   }
+  @media (min-width: 52em) {
+    margin-top: 2.1rem;
+    left: 0;
+    }
 `

@@ -5,8 +5,8 @@ import { Search } from "styled-icons/fa-solid/Search"
 // import { Algolia } from "styled-icons/fa-brands/Algolia"
 import { rhythm } from "../../utils/typography"
 
-const darkBlue = `darkBlue`
-const lightBlue = `lightBlue`
+const darkBlue = `yellow`
+const lightBlue = `Fuchsia`
 const gray = `gray`
 const darkGray = `darkGray`
 const lightGray = `lightGray`
@@ -26,11 +26,14 @@ export const SearchIcon = styled(Search)`
 
 const focus = css`
   background: white;
-  color: ${darkBlue};
+  color: ${gray};
   cursor: text;
-  width: 5em;
+  width: 17em;
+  @media (min-width: 52em) {
+    width: 7em;
+  }
   + ${SearchIcon} {
-    color: ${darkBlue};
+    color: ${darkGray};
     margin: 0.3em;
   }
 `
@@ -49,7 +52,7 @@ const collapse = css`
 
 const expand = css`
   /* background: ${veryLightGray}; */
-  width: 8em;
+  width: 12em;
   margin-left: -1.6em;
   padding-left: 1.6em;
   + ${SearchIcon} {
@@ -87,7 +90,8 @@ export const HitsWrapper = styled.div`
   top: calc(100% + 0.5em);
   width: 80vw;
   max-width: 30em;
-  box-shadow: 0 0 5px 0;
+  /* box-shadow: 0 0 5px 0; */
+  border: 1px solid ${veryLightGray};
   padding: 0.7em 1em 0.4em;
   background: white;
   border-radius: ${smallBorderRadius};
@@ -117,8 +121,8 @@ export const HitsWrapper = styled.div`
     justify-content: space-between;
     margin-bottom: 0.3em;
     h3 {
-      color: white;
-      background: ${gray};
+      color: ${lightBlue};
+      background: ${veryLightGray};
       padding: 0.1em 0.4em;
       border-radius: ${smallBorderRadius};
     }
