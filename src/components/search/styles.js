@@ -28,7 +28,7 @@ const focus = css`
   background: white;
   color: ${gray};
   cursor: text;
-  width: 17em;
+  width: 14em;
   @media (min-width: 52em) {
     width: 7em;
   }
