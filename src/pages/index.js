@@ -57,7 +57,7 @@ const HeroTextOverlayInner = styled.div`
   /* font-size: 300%; */
   font-weight: 500;
   h1 {
-    font-size: 260%;
+    font-size: 220%;
     color: white;
   }
   mix-blend-mode: difference;
@@ -105,7 +105,7 @@ const HomeTitleExchange = css`
 
 const DownArrow = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 9vh;
   z-index: 1000;
   width: 100%;
   /* height: 30%; */
