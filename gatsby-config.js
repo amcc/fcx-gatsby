@@ -1,3 +1,7 @@
+const queries = require("./src/utils/algolia")
+
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `FCX`,
@@ -60,6 +64,16 @@ module.exports = {
         // }
       },
     },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+    // `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

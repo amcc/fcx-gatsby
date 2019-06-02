@@ -1,33 +1,45 @@
-import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import React from "react";
-import { Location } from "@reach/router"; // to get the location
-import Headroom from "react-headroom"; // https://kyleamathews.github.io/react-headroom/
-import { css } from "@emotion/core"; // https://github.com/gatsbyjs/gatsby/blob/master/examples/using-emotion/src/pages/index.js
-import { Flex, Box } from "@rebass/grid/emotion"; //https://github.com/rebassjs/grid
-import { Accent, HeaderOffset, HeaderOffsetMobile, MainWrapper } from "../utils/styles";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import { Location } from "@reach/router" // to get the location
+import Headroom from "react-headroom" // https://kyleamathews.github.io/react-headroom/
+import { css } from "@emotion/core" // https://github.com/gatsbyjs/gatsby/blob/master/examples/using-emotion/src/pages/index.js
+import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
+import {
+  Accent,
+  HeaderOffset,
+  HeaderOffsetMobile,
+  MainWrapper,
+  SearchBox,
+} from "../utils/styles"
 // import { rhythm } from "../utils/typography";
+import Search from "./search"
 
-const headerScaler = 45;
+const searchIndices = [
+  { name: `Articles`, title: `Articles`, hitComp: `ArticleHit` },
+  { name: `Issues`, title: `Issues`, hitComp: `IssueHit` },
+]
+
+const headerScaler = 45
 const headerHeight = css`
   transition: all 0.3s;
   height: ${HeaderOffsetMobile - 8 + "px"};
   @media (min-width: 40em) {
     height: ${HeaderOffset + "px"};
   }
-`;
+`
 const homeTitle = css`
   transition: all 0.3s;
   /* float: left; */
-  font-weight: 800;
+  font-weight: 300;
   margin: 0;
   padding-left: 0.8rem;
   padding-top: 0.5rem;
   font-size: 200%;
   @media (min-width: 40em) {
-    font-size: 300%;
+    font-size: 230%;
     padding-left: 0;
-    padding-top: 0.5rem;
+    padding-top: 1.3rem;
   }
   a {
     text-decoration: none;
@@ -35,7 +47,7 @@ const homeTitle = css`
   a:hover {
     text-decoration: none;
   }
-`;
+`
 
 const navBar = css`
   transition: all 0.3s;
@@ -76,8 +88,8 @@ const navBar = css`
     padding: 10px 10px;
     @media (min-width: 40em) {
       padding: 20px 10px;
-      width: ${headerScaler*1.2}px;
-      height: ${headerScaler*1.4}px;
+      width: ${headerScaler * 1.2}px;
+      height: ${headerScaler * 1.4}px;
       top: 5px;
       right: 23px;
     }
@@ -168,7 +180,7 @@ const navBar = css`
     transform: translateX(120vw);
     transition: transform 200ms ease-in-out;
     /* background: linear-gradient(180deg, #fff 0%, #ccc 100%); */
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
   }
 
   .sidebarMenuInner {
@@ -197,7 +209,7 @@ const navBar = css`
     text-decoration: none;
     font-size: 200%;
   }
-`;
+`
 
 // const sideBarMenu = css``;
 
@@ -212,7 +224,7 @@ const menuList = css`
   margin: 0;
   padding: 0;
   overflow: hidden;
-`;
+`
 
 const menuListItem = css`
   /* float: left; */
@@ -236,43 +248,43 @@ const menuListItem = css`
     font-size: 120%;
     padding: 1rem 0 0rem 1.5rem;
   }
-`;
+`
 
 const sidebarListItem = css`
   font-size: 80%;
   font-weight: 400;
   /* text-decoration: underline; */
-  a:hover > div{
+  a:hover > div {
     color: white;
     background: ${Accent};
   }
-  a:active > div{
+  a:active > div {
     color: white;
     background: ${Accent};
   }
-`;
+`
 
 const sidebarlink = css`
   /* background: green; */
   padding: 25px 0;
   color: ${Accent};
-`;
+`
 
-let currentLocation = "";
+let currentLocation = ""
 
 const Header = class extends React.Component {
   // const Header = ({ siteTitle }) => (
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       // active: false,
       // navBarActiveClass: ""
-    };
+    }
   }
 
   unCheck(ref) {
-    this.refs[ref].checked = !this.refs[ref].checked;
+    this.refs[ref].checked = !this.refs[ref].checked
   }
 
   render() {
@@ -281,7 +293,7 @@ const Header = class extends React.Component {
         <Location>
           {({ location }) => {
             // console.log(location);
-            currentLocation = location.pathname;
+            currentLocation = location.pathname
             // return <p>The location is {currentLocation}</p>;
           }}
         </Location>
@@ -292,13 +304,13 @@ const Header = class extends React.Component {
           style={{
             background: "rgba(255,255,255,0.4)",
             boxShadow: "1px 1px 15px rgba(0,0,0,0.1)",
-            zIndex: 1000
+            zIndex: 1000,
           }}
         >
           <header css={headerHeight}>
             <MainWrapper>
               <Flex flexWrap="wrap">
-                <Box width={[1, 2 / 6]}>
+                <Box width={[1 / 3, 1 / 6]}>
                   {/* Half width */}
                   <h1 css={homeTitle}>
                     <Link
@@ -312,8 +324,9 @@ const Header = class extends React.Component {
                     </Link>
                   </h1>
                 </Box>
+
                 <Box
-                  width={[1, 4 / 6]}
+                  width={[1/3, 9 / 12]}
                   css={css`
                     text-align: left;
                     @media (min-width: 40em) {
@@ -400,21 +413,26 @@ const Header = class extends React.Component {
                     </div>
                   </nav>
                 </Box>
+                <Box width={[1 / 3, 1 / 12]}>
+                  <div css={SearchBox}>
+                    <Search collapse indices={searchIndices} />
+                  </div>
+                </Box>
               </Flex>
             </MainWrapper>
           </header>
         </Headroom>
       </>
-    );
+    )
   }
-};
+}
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
-};
+  siteTitle: PropTypes.string,
+}
 
 Header.defaultProps = {
-  siteTitle: ``
-};
+  siteTitle: ``,
+}
 
-export default Header;
+export default Header

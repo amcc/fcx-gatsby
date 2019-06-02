@@ -9,7 +9,7 @@ import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/g
 import { css } from "@emotion/core"
 
 const ArticleTemplate = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   return (
     <Layout>
       <SEO title="Home" />
@@ -27,7 +27,7 @@ const ArticleTemplate = ({ data }) => {
           data.nodeArticle.relationships.field_article_media.map(
             ({ relationships }, i) => {
               let box = Math.ceil(Math.random()*3)
-              console.log(box)
+              // console.log(box)
               return (
                 <Box
                   p={1}

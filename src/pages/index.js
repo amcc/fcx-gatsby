@@ -42,7 +42,8 @@ const HeroTextOverlay = styled.div`
   width: 100%;
 `
 const HeroTextOverlayInner = styled.div`
-  mix-blend-mode: difference;
+  /* background: white; */
+  /* mix-blend-mode: difference; */
   position: relative;
   height: 60%;
   width: 100%;
@@ -52,9 +53,9 @@ const HeroTextOverlayInner = styled.div`
   }
   margin-top: 3vw;
 
-  padding: 20vh 20vw 0 0vw;
+  padding: 35vh 20vw 0 0vw;
   /* font-size: 300%; */
-  font-weight: 100;
+  font-weight: 500;
   h1 {
     font-size: 260%;
     color: white;
@@ -72,9 +73,9 @@ const HeroTextOverlayInner = styled.div`
   }
   @media (min-width: 52em) {
     h1 {
-      font-size: 300%;
+      font-size: 340%;
     }
-    font-size: 150%;
+    /* font-size: 150%; */
   }
   @media (min-width: 64em) {
     /* font-size: 160%; */
@@ -85,7 +86,7 @@ const HeroTextOverlayInner = styled.div`
   }
 `
 const HomeTitle = css`
-  font-weight: 100;
+  font-weight: 600;
   text-transform: uppercase;
 `
 
@@ -205,7 +206,15 @@ class IndexPage extends Component {
             />
           </DownArrow>
         </HeroContainer>
-        <Flex flexWrap="wrap" alignItems="stretch" ref={this.myDivToFocus}>
+        <Flex
+          flexWrap="wrap"
+          // alignItems="stretch"
+          ref={this.myDivToFocus}
+          css={css`
+            z-index: 100;
+            position: relative;
+          `}
+        >
           {articles.edges &&
             articles.edges.map(({ node }, i) => {
               let articleIssue = new Array()
@@ -214,48 +223,73 @@ class IndexPage extends Component {
                   articleIssue.push(drupal_id)
                 }
               )
-              console.log("Issue = " + issues.edges[0].node.drupal_id)
-              console.log("articleIssue = " + articleIssue)
-              console.log(articleIssue.includes(issues.edges[0].node.drupal_id))
+              ///////////////////////////////
+              // render an image, or a box //
+              ///////////////////////////////
+              let articleBox
+              if (node.relationships.field_article_media) {
+                articleBox = (
+                  <Img
+                    key={
+                      node.relationships.field_article_media[0].relationships
+                        .field_media_image.localFile.childImageSharp.id
+                    }
+                    fluid={
+                      node.relationships.field_article_media[0].relationships
+                        .field_media_image.localFile.childImageSharp.fluid
+                    }
+                    css={css`
+                      height: 100%;
+                      width: auto;
+                    `}
+                  />
+                )
+              } else {
+                articleBox = (
+                  <div
+                    css={css`
+                      background: ${backgroundColours[
+                        Math.floor(Math.random() * backgroundColours.length)
+                      ]};
+                      height: 100%;
+                      width: auto;
+                      padding: ${rhythm(1)};
+                      color: white;
+                      overflow: hidden;
+                      text-decoration: none;
+                      font-size: 80%;
+                    `}
+                  >
+                    {node.field_byline}
+                  </div>
+                )
+              }
+
+              ////////////////////
+              // vary the width //
+              ////////////////////
+              const boxWidths = [2,4,4,4]
+              let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
+
               if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
                 return (
                   <Box
-                    width={[1 / 2, 1 / 3]}
-                    px={[1, 1, 2]}
-                    key={`article-box-${i}`}
+                    p={1}
+                    fontSize={4}
+                    width={[1, 1 / (box/2), 1 / (box)]}
+                    color="white"
+                    // bg="lightgrey"
+                    flex="1 1 auto"
+                    alignSelf
+                    css={css`
+                      max-height: 300px;
+                    `}
+                    key={i}
                     css={[GridBoxContainer, ArticleLink]}
                   >
                     <Link to={`${node.path.alias}`}>
-                      <article
-                        css={GridBox}
-                        key={node.id}
-                        css={css`
-                        background-color: '${
-                          backgroundColours[
-                            Math.floor(Math.random() * backgroundColours.length)
-                          ]
-                        }';
-                      `}
-                      >
-                        {node.relationships.field_article_media && (
-                          // node.relationships.field_article_media.map(
-                          //   ({ relationships }) => (
-                          <Img
-                            key={
-                              node.relationships.field_article_media[0]
-                                .relationships.field_media_image.localFile
-                                .childImageSharp.id
-                            }
-                            fluid={
-                              node.relationships.field_article_media[0]
-                                .relationships.field_media_image.localFile
-                                .childImageSharp.fluid
-                            }
-                          />
-                        )
-                        //   )
-                        // )
-                        }
+                      <article css={GridBox} key={node.id}>
+                        {articleBox}
                         <h3 css={GridHeader}>{node.title}</h3>
                       </article>
                     </Link>
@@ -307,6 +341,7 @@ export const pageQuery = graphql`
           }
           created
           field_date
+          field_byline
           relationships {
             field_issue_reference {
               drupal_id
