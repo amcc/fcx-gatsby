@@ -185,7 +185,7 @@ const navBar = css`
     transform: translateX(120vw);
     transition: transform 200ms ease-in-out;
     /* background: linear-gradient(180deg, #fff 0%, #ccc 100%); */
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 1);
   }
 
   .sidebarMenuInner {
@@ -258,21 +258,23 @@ const menuListItem = css`
 const sidebarListItem = css`
   font-size: 80%;
   font-weight: 400;
+  text-transform: uppercase;
+  background: tomato;
   /* text-decoration: underline; */
   a:hover > div {
     color: white;
-    background: ${Accent};
+    background: chocolate;
   }
   a:active > div {
     color: white;
-    background: ${Accent};
+    background: chocolate;
   }
 `
 
 const sidebarlink = css`
   /* background: green; */
   padding: 25px 0;
-  color: ${Accent};
+  color: black;
 `
 
 let currentLocation = ""
