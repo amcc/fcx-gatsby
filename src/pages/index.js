@@ -91,6 +91,7 @@ const HeroTextOverlayInner = styled.div`
 `
 const CurrentIssue = styled.div`
   position: absolute;
+  z-index: 100;
   bottom: 20vh;
   font-weight: 200;
   width: 80%;
@@ -208,15 +209,16 @@ class IndexPage extends Component {
   render() {
     const issues = this.props.data.allNodeIssue
     const issue = this.props.data.allNodeIssue.edges[0].node
-    console.log(issue)
+    // console.log(issue)
     const articles = this.props.data.allNodeArticle
+    let boxCount = 1
+    let rowWidth = 0
     // console.log(issues)
     // console.log(articles)
     // console.log(this.theposition)
     return (
       <Layout>
         <SEO title="Home" />
-
         <HeroContainer css={HeroStyles}>
           {/* <HeroThree /> */}
           <HomeVideo
@@ -265,8 +267,9 @@ class IndexPage extends Component {
           </DownArrow>
         </HeroContainer>
         <Flex
+          mx={-2}
           flexWrap="wrap"
-          // alignItems="stretch"
+          alignItems="space-evenly"
           ref={this.myDivToFocus}
           css={css`
             z-index: 100;
@@ -276,6 +279,7 @@ class IndexPage extends Component {
           {articles.edges &&
             articles.edges.map(({ node }, i) => {
               let articleIssue = new Array()
+
               node.relationships.field_issue_reference.map(
                 ({ drupal_id }, i) => {
                   articleIssue.push(drupal_id)
@@ -284,6 +288,7 @@ class IndexPage extends Component {
               ///////////////////////////////
               // render an image, or a box //
               ///////////////////////////////
+
               let articleBox
               if (node.relationships.field_article_media) {
                 articleBox = (
@@ -303,6 +308,18 @@ class IndexPage extends Component {
                   />
                 )
               } else {
+                if (node.body) {
+                  // trim the body
+                  var maxLength = 300 // maximum number of characters to extract
+                  //trim the string to the maximum length
+                  var trimmedBody = node.body.processed.substr(0, maxLength)
+                  //re-trim if we are in the middle of a word
+                  trimmedBody = trimmedBody.substr(
+                    0,
+                    Math.min(trimmedBody.length, trimmedBody.lastIndexOf(" "))
+                  )
+                }
+
                 articleBox = (
                   <div
                     css={css`
@@ -317,27 +334,53 @@ class IndexPage extends Component {
                       text-decoration: none;
                       font-size: 80%;
                     `}
-                  >
-                    {node.field_byline}
-                  </div>
+                    dangerouslySetInnerHTML={{ __html: trimmedBody }}
+                  />
                 )
               }
 
               ////////////////////
               // vary the width //
               ////////////////////
-              const boxWidths = [2, 4, 4, 4]
+
+              let boxWidths = [1 / 3, 2 / 3]
               let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
 
+              // if (boxCount > 3) {
+              //   boxCount = 1
+              // }
+
+              if (boxCount > 3) {
+                rowWidth = 0
+                boxCount = 1
+              }
+              if (rowWidth >= 3) {
+                rowWidth = 0
+                boxCount = 1
+              }
+
+              if (rowWidth >= 2) {
+                box = 1 / 3
+                console.log("rowwidth is 2!!!!!")
+              }
+              rowWidth += box / (1 / 3)
+
+              console.log("---start---")
+              console.log("boxcount is " + boxCount)
+              console.log("row width = " + rowWidth)
+              console.log("box is " + box)
+              console.log("---end---")
+
+              boxCount++
               if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
                 return (
                   <Box
-                    p={1}
+                    p={2}
                     fontSize={4}
-                    width={[1, 1 / (box / 2), 1 / box]}
+                    width={[1, box, box]}
                     color="white"
                     // bg="lightgrey"
-                    flex="1 1 auto"
+                    // flex="1 1 auto"
                     alignSelf
                     css={css`
                       max-height: 300px;
@@ -347,8 +390,9 @@ class IndexPage extends Component {
                   >
                     <Link to={`${node.path.alias}`}>
                       <article css={GridBox} key={node.id}>
+                        <section>{node.field_date}</section>
+                        <h3 css={[GridHeader]}>{node.field_byline}</h3>
                         {articleBox}
-                        <h3 css={GridHeader}>{node.title}</h3>
                       </article>
                     </Link>
                   </Box>
@@ -356,26 +400,6 @@ class IndexPage extends Component {
               }
             })}
         </Flex>
-        {/* {articles.edges.map(({ node }, i) => {
-            return (
-            <div key={i}>
-              <h3>issue</h3>
-              <p>{issues.edges[0].node.drupal_id}</p>
-              <h3>article</h3>
-              <p>{node.title}</p>
-              <p>{node.drupal_id}</p>
-              {node.relationships.field_issue_reference.map(
-                ({ drupal_id }, i) => {
-                  return (
-                    <p>
-                      issueref-<b>{drupal_id}</b>
-                    </p>
-                  )
-                }
-              )}
-            </div>
-          )
-        })} */}
       </Layout>
     )
   }
@@ -398,7 +422,10 @@ export const pageQuery = graphql`
             alias
           }
           created
-          field_date
+          body {
+            processed
+          }
+          field_date(formatString: "MMMM YYYY")
           field_byline
           relationships {
             field_issue_reference {

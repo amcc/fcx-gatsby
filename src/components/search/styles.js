@@ -64,7 +64,7 @@ export const Input = styled.input`
   outline: none;
   border: none;
   font-size: 1em;
-  /* background: ${veryLightGray}; */
+  background: transparent;
   transition: all 0.5s;
   border-radius: ${smallBorderRadius};
   ${props => props.collapse ? collapse : expand};

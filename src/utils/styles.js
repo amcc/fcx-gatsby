@@ -25,7 +25,7 @@ const RadiusBR = `3px`
 const RadiusBL = `3px`
 export const BorderRadius = `border-radius: ${RadiusTL} ${RadiusTR} ${RadiusBR} ${RadiusBL}`
 
-const GridHeaderSize = `100%`
+const GridHeaderSize = `80%`
 const GridHeaderSizeMobile = `90%`
 
 // rebass grid breakpoints
@@ -187,8 +187,15 @@ export const GridBox = css`
   /* margin-bottom: ${rhythm(1)}; */
   background: white;
 
-  ${BoxShadow};
-  ${BorderRadius};
+  /* ${BoxShadow};
+  ${BorderRadius}; */
+  section {
+    text-align: right;
+    font-size: ${GridHeaderSize};
+    padding: ${rhythm(1 / 3)};
+    border-bottom: 1px solid gray;
+    font-size: 60%;
+  }
   a > div {
     height: 120px;
     @media (min-width: 40em) {
@@ -212,7 +219,9 @@ export const GridHeader = css`
   padding: ${rhythm(1 / 4)};
   font-weight: 400;
   margin-bottom: 0;
+  height: 9rem;
   @media (min-width: 40em) {
+    height: 7rem;
     font-size: ${GridHeaderSize};
     padding: ${rhythm(1 / 3)};
   }
