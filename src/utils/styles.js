@@ -111,9 +111,11 @@ export const Padded = css`
   }
 `
 export const PaddedMobile = css`
-  padding: 0 ${rhythm(1)};
+  padding-left: ${rhythm(1)};
+  padding-right: ${rhythm(1)};
   @media (min-width: 40em) {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 `
 //
