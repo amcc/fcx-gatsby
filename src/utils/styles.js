@@ -26,7 +26,7 @@ const RadiusBL = `3px`
 export const BorderRadius = `border-radius: ${RadiusTL} ${RadiusTR} ${RadiusBR} ${RadiusBL}`
 
 const GridHeaderSize = `80%`
-const GridHeaderSizeMobile = `90%`
+const GridHeaderSizeMobile = `83%`
 
 // rebass grid breakpoints
 // 40em, 52em, 64em
@@ -136,7 +136,7 @@ export const ArticleLink = css`
     /* height: 100%; */
     width: auto;
     > div {
-      height: 280px;
+      height: 420px;
     }
     /* min-height: 350px; */
     /* position: relative; */

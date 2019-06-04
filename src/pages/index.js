@@ -91,17 +91,19 @@ const HeroTextOverlayInner = styled.div`
 `
 const CurrentIssue = styled.div`
   position: absolute;
+  /* mix-blend-mode: difference; */
   z-index: 100;
   bottom: 20vh;
   font-weight: 200;
   width: 80%;
   p {
-    font-size: 120%;
+    font-size: 100%;
     font-weight: 400;
   }
   /* padding: 10vh 0 0 0; */
   a {
     text-decoration: none;
+    color: white;
   }
   h2 {
     text-transform: uppercase;
@@ -112,6 +114,9 @@ const CurrentIssue = styled.div`
   }
   @media (min-width: 40em) {
     width: 70%;
+    p {
+    font-size: 120%;
+  }
     /* padding: 7vh 0 0 0; */
     bottom: 10vh;
   }
@@ -225,7 +230,7 @@ class IndexPage extends Component {
             // video={`Comp_2_2_c6wxxb`}
             video="fcxblur.mp4"
             css={css`
-              mix-blend-mode: difference;
+              /* mix-blend-mode: difference; */
               margin-top: -80px;
               position: relative;
               z-index: 0;
@@ -248,8 +253,7 @@ class IndexPage extends Component {
                 </Box>
               </Flex>
             </HeroTextOverlayInner>
-          </HeroTextOverlay>
-          <CurrentIssue css={PaddedMobile}>
+            <CurrentIssue css={PaddedMobile}>
             <Link to={`${issue.path.alias}`}>
               <h2>current issue</h2>
               <p>
@@ -258,6 +262,8 @@ class IndexPage extends Component {
               </p>
             </Link>
           </CurrentIssue>
+          </HeroTextOverlay>
+          
           <DownArrow>
             <FaChevronDown
               // size={40}
@@ -310,7 +316,7 @@ class IndexPage extends Component {
               } else {
                 if (node.body) {
                   // trim the body
-                  var maxLength = 300 // maximum number of characters to extract
+                  var maxLength = 500 // maximum number of characters to extract
                   //trim the string to the maximum length
                   var trimmedBody = node.body.processed.substr(0, maxLength)
                   //re-trim if we are in the middle of a word
