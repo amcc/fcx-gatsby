@@ -8,22 +8,23 @@ import { HeaderOffset, HeaderOffsetMobile } from "../utils/styles"
 
 const CustomHeroImage = styled.div`
   /* width: auto; */
-  height: 96vh;
+  height: ${100+HeaderOffsetMobile}vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: -${HeaderOffsetMobile}px;
   > div,
   a > div {
-    height: 96vh;
+    height: 100vh;
   }
   @media (min-width: 40em) {
-    height: 95vh;
+    height: ${100+HeaderOffset}vh;
+    /* height: 100vh; */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     margin-top: -${HeaderOffset}px;
     > div,
     a > div {
-      height: 95vh;
+      height: 100vh;
     }
   }
 `
@@ -81,11 +82,12 @@ const HomeVideo = ({ video }) => {
           justify-content: center;
           overflow-x: hidden;
           video {
-            height: 100vh;
-            width: auto;
+            /* height: 100vh;
+            width: auto; */
+            object-fit: cover;
             @media (min-width: 40em) {
-              width: 100vw;
-              height: auto;
+              /* width: 100vw;
+              height: auto; */
             }
           }
         `}

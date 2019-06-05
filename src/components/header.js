@@ -9,6 +9,7 @@ import {
   Accent,
   HeaderOffset,
   HeaderOffsetMobile,
+  HeaderOffsetMobileBig,
   MainWrapper,
   SearchBox,
 } from "../utils/styles"
@@ -25,6 +26,9 @@ const headerHeight = css`
   transition: all 0.3s;
   height: ${HeaderOffsetMobile - 8 + "px"};
   @media (min-width: 40em) {
+    height: ${HeaderOffsetMobileBig + "px"};
+  }
+  @media (min-width: 52em) {
     height: ${HeaderOffset + "px"};
   }
 `
@@ -34,17 +38,17 @@ const homeTitle = css`
   font-weight: 300;
   margin: 0;
   padding-left: 0.8rem;
-  padding-top: 0.5rem;
+  padding-top: 0.3rem;
   font-size: 200%;
   @media (min-width: 40em) {
     font-size: 200%;
     padding-left: 0;
-    padding-top: 1rem;
+    padding-top: 0.8rem;
   }
   @media (min-width: 52em) {
     font-size: 230%;
     padding-left: 0;
-    padding-top: 1.3rem;
+    padding-top: 0.8rem;
   }
   a {
     text-decoration: none;
@@ -63,7 +67,7 @@ const navBar = css`
   /* display: none; */
   @media (min-width: 40em) {
     /* display: block; */
-    padding-top: 1.93rem;
+    padding-top: 1.5rem;
     padding-bottom: 0.3rem;
   }
 
@@ -85,7 +89,7 @@ const navBar = css`
     z-index: 99;
     /* height: 100%;
     width: 100%; */
-    top: 7px;
+    top: 3px;
     right: 14px;
     height: ${headerScaler}px;
     width: ${headerScaler}px;
@@ -95,7 +99,7 @@ const navBar = css`
       padding: 20px 10px;
       width: ${headerScaler * 1.2}px;
       height: ${headerScaler * 1.4}px;
-      top: 5px;
+      top: -1px;
       right: 23px;
     }
     @media (min-width: 52em) {
@@ -180,6 +184,9 @@ const navBar = css`
     height: 100vh;
     margin-top: ${HeaderOffsetMobile - 10 + "px"};
     @media (min-width: 40em) {
+      margin-top: ${HeaderOffsetMobileBig - 10 + "px"};
+    }
+    @media (min-width: 52em) {
       margin-top: ${HeaderOffset - 10 + "px"};
     }
     transform: translateX(120vw);

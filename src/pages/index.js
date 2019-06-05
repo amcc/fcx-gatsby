@@ -69,7 +69,7 @@ const HeroTextOverlayInner = styled.div`
     padding: 18vh 0vw 0 0vw;
     /* font-size: 150%; */
     h1 {
-      font-size: 330%;
+      font-size: 250%;
     }
     h3 {
       padding-left: 0;
@@ -115,7 +115,7 @@ const CurrentIssue = styled.div`
   @media (min-width: 40em) {
     width: 70%;
     p {
-    font-size: 120%;
+    font-size: 100%;
   }
     /* padding: 7vh 0 0 0; */
     bottom: 10vh;
@@ -383,7 +383,7 @@ class IndexPage extends Component {
                   <Box
                     p={2}
                     fontSize={4}
-                    width={[1, box, box]}
+                    width={[1, 1/2, box]}
                     color="white"
                     // bg="lightgrey"
                     // flex="1 1 auto"

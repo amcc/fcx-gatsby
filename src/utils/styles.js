@@ -5,8 +5,9 @@ import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 
 const MaxWidth = `1400px`
-export const HeaderOffset = "70"
-export const HeaderOffsetMobile = "61"
+export const HeaderOffset = "60"
+export const HeaderOffsetMobileBig = "56"
+export const HeaderOffsetMobile = "50"
 
 export const Accent = `SlateGray`
 export const SubtleAccent = `#eee`
@@ -26,7 +27,7 @@ const RadiusBL = `3px`
 export const BorderRadius = `border-radius: ${RadiusTL} ${RadiusTR} ${RadiusBR} ${RadiusBL}`
 
 const GridHeaderSize = `80%`
-const GridHeaderSizeMobile = `83%`
+const GridHeaderSizeMobile = `70%`
 
 // rebass grid breakpoints
 // 40em, 52em, 64em
@@ -222,6 +223,11 @@ export const GridHeader = css`
   height: 9rem;
   @media (min-width: 40em) {
     height: 7rem;
+    font-size: ${GridHeaderSizeMobile};
+    padding: ${rhythm(1 / 3)};
+  }
+  @media (min-width: 52em) {
+    height: 7rem;
     font-size: ${GridHeaderSize};
     padding: ${rhythm(1 / 3)};
   }
@@ -236,13 +242,13 @@ export const GridSectionHeader = css`
 `
 export const SearchBox = css`
   position: relative;
-  margin-top: 0.8rem;
+  margin-top: 0.45rem;
   left: -5rem;
   @media (min-width: 40em) {
-    margin-top: 1.4rem;
+    margin-top: 0.8rem;
   }
   @media (min-width: 52em) {
-    margin-top: 2.1rem;
+    margin-top: 1.6rem;
     left: 0;
-    }
+  }
 `
