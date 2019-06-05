@@ -8,7 +8,7 @@ import { HeaderOffset, HeaderOffsetMobile } from "../utils/styles"
 
 const CustomHeroImage = styled.div`
   /* width: auto; */
-  height: ${100+HeaderOffsetMobile}vh;
+  height: ${HeaderOffsetMobile}vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: -${HeaderOffsetMobile}px;
@@ -17,7 +17,7 @@ const CustomHeroImage = styled.div`
     height: 100vh;
   }
   @media (min-width: 40em) {
-    height: ${100+HeaderOffset}vh;
+    height: ${HeaderOffset}vh;
     /* height: 100vh; */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);

@@ -227,10 +227,8 @@ class IndexPage extends Component {
         <HeroContainer css={HeroStyles}>
           {/* <HeroThree /> */}
           <HomeVideo
-            // video={`Comp_2_2_c6wxxb`}
             video="fcxblur.mp4"
             css={css`
-              /* mix-blend-mode: difference; */
               margin-top: -80px;
               position: relative;
               z-index: 0;
@@ -273,7 +271,7 @@ class IndexPage extends Component {
           </DownArrow>
         </HeroContainer>
         <Flex
-          mx={-2}
+          mx={[0,-2,-2]}
           flexWrap="wrap"
           alignItems="space-evenly"
           ref={this.myDivToFocus}
@@ -381,7 +379,7 @@ class IndexPage extends Component {
               if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
                 return (
                   <Box
-                    p={2}
+                    p={[0,2,2]}
                     fontSize={4}
                     width={[1, 1/2, box]}
                     color="white"
