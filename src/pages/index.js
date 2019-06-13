@@ -365,15 +365,15 @@ class IndexPage extends Component {
 
               if (rowWidth >= 2) {
                 box = 1 / 3
-                console.log("rowwidth is 2!!!!!")
+                // console.log("rowwidth is 2!!!!!")
               }
               rowWidth += box / (1 / 3)
 
-              console.log("---start---")
-              console.log("boxcount is " + boxCount)
-              console.log("row width = " + rowWidth)
-              console.log("box is " + box)
-              console.log("---end---")
+              // console.log("---start---")
+              // console.log("boxcount is " + boxCount)
+              // console.log("row width = " + rowWidth)
+              // console.log("box is " + box)
+              // console.log("---end---")
 
               boxCount++
               if (articleIssue.includes(issues.edges[0].node.drupal_id)) {
