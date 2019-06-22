@@ -3,6 +3,18 @@ import Img from "gatsby-image"
 import { rhythm } from "../utils/typography"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
+import {
+  Lunch22EOT,
+  Lunch22EOTIE,
+  Lunch22WOFF2,
+  Lunch22WOFF,
+  Lunch22TTF,
+  Lunch24EOT,
+  Lunch24EOTIE,
+  Lunch24WOFF2,
+  Lunch24WOFF,
+  Lunch24TTF,
+} from "./fonts"
 
 const MaxWidth = `1400px`
 export const HeaderOffset = "60"
@@ -35,6 +47,43 @@ export const GlobalStyle = props => (
   <Global
     {...props}
     styles={css`
+      @font-face {
+        font-family: "lunch22";
+        src: url(${Lunch22EOT});
+        src: url(${Lunch22EOTIE}) format("embedded-opentype"),
+          url(${Lunch22WOFF2}) format("woff2"),
+          url(${Lunch22WOFF}) format("woff"),
+          url(${Lunch22TTF}) format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "lunch24";
+        src: url(${Lunch24EOT});
+        src: url(${Lunch24EOTIE}) format("embedded-opentype"),
+          url(${Lunch24WOFF2}) format("woff2"),
+          url(${Lunch24WOFF}) format("woff"),
+          url(${Lunch24TTF}) format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        /* the above makes scrolling screw up on iphone */
+        /* -webkit-overflow-scrolling: touch; */
+        height: 100%;
+        font-family: "lunch22", Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background: #fefefe;
+        -webkit-overflow-scrolling: touch;
+      }
       html,
       body {
         /* the above makes scrolling screw up on iphone */

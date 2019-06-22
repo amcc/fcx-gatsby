@@ -7,6 +7,7 @@ import { css } from "@emotion/core"
 import { HeaderOffset, HeaderOffsetMobile } from "../utils/styles"
 
 const CustomHeroImage = styled.div`
+  /* overflow: hidden; */
   /* width: auto; */
   height: ${HeaderOffsetMobile}vh;
   margin-left: calc(50% - 50vw);
@@ -80,8 +81,9 @@ const HomeVideo = ({ video }) => {
           align-items: center;
           -webkit-justify-content: center;
           justify-content: center;
-          overflow-x: hidden;
+          overflow: hidden;
           video {
+
             /* height: 100vh;
             width: auto; */
             object-fit: cover;

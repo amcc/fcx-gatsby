@@ -59,6 +59,7 @@ const homeTitle = css`
 `
 
 const navBar = css`
+text-transform: uppercase;
   transition: all 0.3s;
   /* float: right; */
   padding-top: 2rem;
@@ -316,8 +317,8 @@ const Header = class extends React.Component {
           // onUnpin={() => console.log("unpinned")}
           // wrapperStyle={{ marginBottom: rhythm(1) }}
           style={{
-            background: "rgba(255,255,255,0.4)",
-            boxShadow: "1px 1px 15px rgba(0,0,0,0.1)",
+            background: "rgba(255,255,255,0.8)",
+            // boxShadow: "1px 1px 15px rgba(0,0,0,0.1)",
             zIndex: 1000,
           }}
         >
@@ -352,13 +353,13 @@ const Header = class extends React.Component {
                   <nav css={navBar}>
                     <ul css={menuList}>
                       <li css={menuListItem}>
-                        <Link to="/issues" activeStyle={{ color: "grey" }}>
-                          Issues
+                        <Link to="/feed" activeStyle={{ color: "grey" }}>
+                          Feed
                         </Link>
                       </li>
                       <li css={menuListItem}>
-                        <Link to="/articles" activeStyle={{ color: "grey" }}>
-                          Articles
+                        <Link to="/issues" activeStyle={{ color: "grey" }}>
+                          Issues
                         </Link>
                       </li>
                       <li css={menuListItem}>
