@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import { Search } from "styled-icons/fa-solid/Search"
 // import { Algolia } from "styled-icons/fa-brands/Algolia"
-import { rhythm } from "../../utils/typography"
+// import { rhythm } from "../../utils/typography"
 
 const darkBlue = `yellow`
 const lightBlue = `Fuchsia`

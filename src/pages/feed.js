@@ -1,19 +1,11 @@
 import React, { Component } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
 
-import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
-import { rhythm } from "../utils/typography"
-// import HeroImage from "../components/heroimage";
-// import { FaChevronDown } from "react-icons/fa";
-// import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-// import styled from "@emotion/styled";
-
-import { backgroundColours, ArticleLink, GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
+import { Flex, Box } from "@rebass/grid/emotion" 
+import ArticleFeed from "../components/articleFeed"
 
 const Row = props => <Flex {...props} mx={-3} />
 
@@ -55,89 +47,7 @@ class Articles extends Component {
       <Layout>
         <SEO title="Articles" />
 
-        <Flex
-        flexWrap="wrap"
-        // alignItems="stretch"
-        ref={this.myDivToFocus}
-        css={css`
-          z-index: 100;
-          position: relative;
-        `}
-        >
-          {articles.edges &&
-            articles.edges.map(({ node }, i) => {
-              ///////////////////////////////
-              // render an image, or a box //
-              ///////////////////////////////
-              let articleBox
-              if (node.relationships.field_article_media) {
-                articleBox = (
-                  <Img
-                    key={
-                      node.relationships.field_article_media[0].relationships
-                        .field_media_image.localFile.childImageSharp.id
-                    }
-                    fluid={
-                      node.relationships.field_article_media[0].relationships
-                        .field_media_image.localFile.childImageSharp.fluid
-                    }
-                    css={css`
-                      height: 100%;
-                      width: auto;
-                    `}
-                  />
-                )
-              } else {
-                articleBox = (
-                  <div
-                    css={css`
-                      background: ${backgroundColours[
-                        Math.floor(Math.random() * backgroundColours.length)
-                      ]};
-                      height: 100%;
-                      width: auto;
-                      padding: ${rhythm(1)};
-                      color: white;
-                      overflow: hidden;
-                      text-decoration: none;
-                      font-size: 80%;
-                    `}
-                  >
-                    {node.field_byline}
-                  </div>
-                )
-              }
-
-              ////////////////////
-              // vary the width //
-              ////////////////////
-              const boxWidths = [2,4,4,4]
-              let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
-              return (
-                <Box
-                  p={1}
-                  fontSize={4}
-                  width={[1, 1 / (box/2), 1 / (box)]}
-                  color="white"
-                  // bg="lightgrey"
-                  flex="1 1 auto"
-                  alignSelf
-                  css={css`
-                    max-height: 300px;
-                  `}
-                  key={i}
-                  css={[GridBoxContainer, ArticleLink]}
-                >
-                  <Link to={`${node.path.alias}`}>
-                    <article css={GridBox} key={node.id}>
-                      {articleBox}
-                      <h3 css={GridHeader}>{node.title}</h3>
-                    </article>
-                  </Link>
-                </Box>
-              )
-            })}
-        </Flex>
+        <ArticleFeed articles={articles} />
       </Layout>
     )
   }
@@ -150,36 +60,7 @@ export const pageQuery = graphql`
     allNodeArticle(sort: { fields: [field_date], order: DESC }, limit: 100) {
       edges {
         node {
-          id
-          drupal_id
-          title
-          fields {
-            slug
-          }
-          path {
-            alias
-          }
-          created
-          field_date
-          relationships {
-            field_issue_reference {
-              drupal_id
-            }
-            field_article_media {
-              relationships {
-                field_media_image {
-                  localFile {
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 300) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          ...ArticleFeed
         }
       }
     }

@@ -4,11 +4,24 @@ import { rhythm } from "../utils/typography"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 import {
-  Lunch22EOT,
-  Lunch22EOTIE,
-  Lunch22WOFF2,
-  Lunch22WOFF,
-  Lunch22TTF,
+  Lunch22LEOT,
+  Lunch22LEOTIE,
+  Lunch22LTTF,
+  Lunch22LWOFF,
+  Lunch22LWOFF2,
+  
+  Lunch22REOT,
+  Lunch22REOTIE,
+  Lunch22RTTF,
+  Lunch22RWOFF,
+  Lunch22RWOFF2,
+
+  Lunch22MEOT,
+  Lunch22MEOTIE,
+  Lunch22MTTF,
+  Lunch22MWOFF,
+  Lunch22MWOFF2,
+
   Lunch24EOT,
   Lunch24EOTIE,
   Lunch24WOFF2,
@@ -49,12 +62,32 @@ export const GlobalStyle = props => (
     styles={css`
       @font-face {
         font-family: "lunch22";
-        src: url(${Lunch22EOT});
-        src: url(${Lunch22EOTIE}) format("embedded-opentype"),
-          url(${Lunch22WOFF2}) format("woff2"),
-          url(${Lunch22WOFF}) format("woff"),
-          url(${Lunch22TTF}) format("truetype");
-        font-weight: normal;
+        src: url(${Lunch22LEOT});
+        src: url(${Lunch22LEOTIE}) format("embedded-opentype"),
+          url(${Lunch22LWOFF2}) format("woff2"),
+          url(${Lunch22LWOFF}) format("woff"),
+          url(${Lunch22LTTF}) format("truetype");
+        font-weight: 200;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "lunch22";
+        src: url(${Lunch22REOT});
+        src: url(${Lunch22REOTIE}) format("embedded-opentype"),
+          url(${Lunch22RWOFF2}) format("woff2"),
+          url(${Lunch22RWOFF}) format("woff"),
+          url(${Lunch22RTTF}) format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "lunch22";
+        src: url(${Lunch22MEOT});
+        src: url(${Lunch22MEOTIE}) format("embedded-opentype"),
+          url(${Lunch22MWOFF2}) format("woff2"),
+          url(${Lunch22MWOFF}) format("woff"),
+          url(${Lunch22MTTF}) format("truetype");
+        font-weight: 600;
         font-style: normal;
       }
       @font-face {
@@ -76,6 +109,7 @@ export const GlobalStyle = props => (
         /* the above makes scrolling screw up on iphone */
         /* -webkit-overflow-scrolling: touch; */
         height: 100%;
+        font-weight: 400;
         font-family: "lunch22", Helvetica, Arial, sans-serif;
       }
 
@@ -95,7 +129,8 @@ export const GlobalStyle = props => (
         background: #fefefe;
       }
       h1 {
-        font-weight: 400;
+        font-weight: 600;
+        font-family: "lunch22", Helvetica, Arial, sans-serif;
       }
       h2 {
         font-weight: 400;
