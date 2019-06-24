@@ -11,7 +11,7 @@
     "algoliasearch": "^3.33.0",
     "cloudinary-react": "^1.1.0",
     "dotenv": "^8.0.0",
-    "gatsby": "^2.5.5",
+    "gatsby": "^2.10.4",
     "gatsby-image": "^2.1.0",
     "gatsby-plugin-algolia": "^0.3.0",
     "gatsby-plugin-emotion": "^4.0.6",

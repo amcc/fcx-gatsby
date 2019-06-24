@@ -183,3 +183,17 @@ export const query = graphql`
     }
   }
 `
+// to do
+
+// do we use the featured image?
+
+// a better idea might be to ues the first image of the media. 
+// Makes more sense perhaps as we often dont have a featured image.
+
+// field_article_featured_image {
+//   localFile {
+//     childImageSharp {
+//       ......
+//     }
+//   }
+// }

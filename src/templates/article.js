@@ -17,79 +17,71 @@ const ArticleTemplate = ({ data }) => {
       <h1>
         <Link to={`/feed/`}>Feed</Link> / {data.nodeArticle.title}
       </h1>
-      <Flex
-        flexWrap="wrap"
-      >
-      {data.nodeArticle.body && (
-        <Box
-        width={1}
-        >
-<Box
-          p={1}
-          fontSize={4}
-          width={[1/2]}
-          alignSelf
-        >
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data.nodeArticle.body.processed,
-            }}
-          />
-        </Box>
-        </Box> 
-      )}
+      <Flex flexWrap="wrap">
+        {data.nodeArticle.body && (
+          <Box width={1}>
+            <Box p={1} fontSize={4} width={[1 / 2]} alignSelf>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data.nodeArticle.body.processed,
+                }}
+              />
+            </Box>
+          </Box>
+        )}
 
-      {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
-      {data.nodeArticle.relationships &&
-        data.nodeArticle.relationships.field_article_media &&
-        data.nodeArticle.relationships.field_article_media.map(
-          ({ relationships }, i) => {
-            return (
-              <Box
-                p={1}
-                fontSize={4}
-                width={[1]}
-                color="white"
-                // bg="lightgrey"
-                // flex="1 1 auto"
-                alignSelf
-                css={css`
-                  /* max-height: 300px; */
-                `}
-                key={i}
-              >
-                <Img
+        {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
+        {data.nodeArticle.relationships &&
+          data.nodeArticle.relationships.field_article_media &&
+          data.nodeArticle.relationships.field_article_media.map(
+            ({ relationships }, i) => {
+              return (
+                <Box
+                  p={1}
+                  fontSize={4}
+                  width={[1]}
+                  color="white"
+                  // bg="lightgrey"
+                  // flex="1 1 auto"
+                  alignSelf
                   css={css`
-                    height: 100%;
-                    width: auto;
+                    /* max-height: 300px; */
                   `}
-                  key={
-                    relationships.field_media_image.localFile.childImageSharp.id
-                  }
-                  fluid={
-                    relationships.field_media_image.localFile.childImageSharp
-                      .fluid
-                  }
+                  key={i}
+                >
+                  <Img
+                    css={css`
+                      height: 100%;
+                      width: auto;
+                    `}
+                    key={
+                      relationships.field_media_image.localFile.childImageSharp
+                        .id
+                    }
+                    fluid={
+                      relationships.field_media_image.localFile.childImageSharp
+                        .fluid
+                    }
+                  />
+                </Box>
+              )
+            }
+          )}
+
+        {data.nodeArticle.relationships &&
+          data.nodeArticle.relationships.field_article_video &&
+          data.nodeArticle.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
+            (video, i) => (
+              <Box p={1} fontSize={4} width={[1]}>
+                <Video
+                  css={ArticleVideo}
+                  videoSrcURL={video.field_media_oembed_video}
+                  videoTitle={video.name}
+                  key={video.id}
                 />
               </Box>
             )
-          }
-        )}
-
-      {data.nodeArticle.relationships &&
-        data.nodeArticle.relationships.field_article_video &&
-        data.nodeArticle.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
-          (video, i) => (
-            <Box p={1} fontSize={4} width={[1]}>
-              <Video
-                css={ArticleVideo}
-                videoSrcURL={video.field_media_oembed_video}
-                videoTitle={video.name}
-                key={video.id}
-              />
-            </Box>
-          )
-        )}
+          )}
       </Flex>
     </Layout>
   )
