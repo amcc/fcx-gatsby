@@ -157,39 +157,16 @@ const HomeTitleExchange = css`
 `
 
 class IndexPage extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = {
-    //    field: value
-    // }
-    //creates a reference for your element to use
-    this.myDivToFocus = React.createRef()
-  }
-
-  // load the smoothscroll here as it requires window:
-  // https://github.com/webpack/react-starter/issues/37
-  componentDidMount() {
-    const smoothscroll = require("smoothscroll-polyfill")
-    // kick off the polyfill!
-    // this hopefully fixes ios smooth
-    smoothscroll.polyfill()
-  }
-
-  handleOnClick = event => {
-    //.current is verification that your element has rendered
-    if (this.myDivToFocus.current) {
-      this.myDivToFocus.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    }
-  }
 
   render() {
     // const issues = this.props.data.allNodeIssue
     const issue = this.props.data.allNodeIssue.edges[0].node
 
-    const articles = this.props.data.allNodeArticle
+    const articleNodes = this.props.data.allNodeArticle.edges
+    const articles = []
+    articleNodes.map(({node} , i) => {
+      articles.push(node)
+    })
 
     return (
       <Layout>

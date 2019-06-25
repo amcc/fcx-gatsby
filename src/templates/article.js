@@ -7,33 +7,74 @@ import SEO from "../components/seo"
 import Video from "../components/video"
 import { Flex, Box } from "@rebass/grid/emotion"
 import { css } from "@emotion/core"
+import { HeaderBarColour, SectionHeader } from "../utils/styles"
 
-const ArticleVideo = css``
+const DateBox = css`
+  text-align: right;
+`
 const ArticleTemplate = ({ data }) => {
-  // console.log(data)
+
+  const article = data.nodeArticle
+  console.log(article)
+
+  if (article.relationships.field_article_featured_image) {
+    console.log(article.relationships.field_article_featured_image)
+  }
+
+  
   return (
     <Layout>
-      <SEO title={`FCX | ` + data.nodeArticle.title} />
-      <h1>
-        <Link to={`/feed/`}>Feed</Link> / {data.nodeArticle.title}
-      </h1>
-      <Flex flexWrap="wrap">
-        {data.nodeArticle.body && (
-          <Box width={1}>
-            <Box p={1} fontSize={4} width={[1 / 2]} alignSelf>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: data.nodeArticle.body.processed,
-                }}
-              />
-            </Box>
+      <SEO title={`FCX | ` + article.title} />
+      <SectionHeader>
+        <Flex
+          // mx={[0, -1, -2]}
+          flexWrap="wrap"
+        >
+          <Box width={[1, 1 / 2]} px={[0, 1, 2]} color={`black`}>
+            <Link to={`/feed/`}>BACK TO FEED</Link>
           </Box>
-        )}
+          <Box width={[1, 1 / 2]} px={[0, 1, 2]} css={DateBox}>
+            {article.field_date}
+          </Box>
+        </Flex>
+      </SectionHeader>
+      <Flex
+        // mx={[0, -1, -2]}
+        flexWrap="wrap"
+        justifyContent="space-between"
+        // py={4}
+        mx={4}
+      >
+        <Box width={[1]}>
+          <h1>{article.title}</h1>
+        </Box>
+
+        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
+          {article.relationships &&
+            article.relationships.field_article_featured_image &&
+            article.relationships.field_article_featured_image.map(
+              ({ localFile }) => (
+                <Img
+                  key={localFile.childImageSharp.id}
+                  fluid={localFile.childImageSharp.fluid}
+                />
+              )
+            )}
+        </Box>
+        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
+          {article.body && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: article.body.processed,
+              }}
+            />
+          )}
+        </Box>
 
         {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
-        {data.nodeArticle.relationships &&
-          data.nodeArticle.relationships.field_article_media &&
-          data.nodeArticle.relationships.field_article_media.map(
+        {article.relationships &&
+          article.relationships.field_article_media &&
+          article.relationships.field_article_media.map(
             ({ relationships }, i) => {
               return (
                 <Box
@@ -68,13 +109,12 @@ const ArticleTemplate = ({ data }) => {
             }
           )}
 
-        {data.nodeArticle.relationships &&
-          data.nodeArticle.relationships.field_article_video &&
-          data.nodeArticle.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
+        {article.relationships &&
+          article.relationships.field_article_video &&
+          article.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
             (video, i) => (
               <Box p={1} fontSize={4} width={[1]}>
                 <Video
-                  css={ArticleVideo}
                   videoSrcURL={video.field_media_oembed_video}
                   videoTitle={video.name}
                   key={video.id}
@@ -96,6 +136,8 @@ export const query = graphql`
       body {
         processed
       }
+      field_byline
+      field_date(formatString: "MMMM YYYY")
       relationships {
         field_article_video {
           relationships {
@@ -110,19 +152,31 @@ export const query = graphql`
             }
           }
         }
+        field_article_featured_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1400, quality: 75) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
         field_article_media {
           relationships {
             field_media_image {
               localFile {
                 childImageSharp {
                   id
-                  fluid(maxWidth: 300) {
+                  fluid(maxWidth: 1400, quality: 75) {
                     ...GatsbyImageSharpFluid
                   }
                 }
               }
             }
           }
+        }
+        field_issue_reference {
+          ...IssueFeed
         }
       }
     }

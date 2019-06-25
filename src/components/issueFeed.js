@@ -24,10 +24,9 @@ const Byline = css`
   margin: ${rhythm(1)} 0;
 `
 
-const ArticleFeed = ({ articles }) => {
+const IssueFeed = ({ issues }) => {
   let boxCount = 1
   let rowWidth = 0
-  console.log(articles[0])
   return (
     <Flex
       mx={[0, -2, -2]}
@@ -38,21 +37,22 @@ const ArticleFeed = ({ articles }) => {
         position: relative;
       `}
     >
-      {articles &&
-        articles.map((node , i) => {
+      {issues.edges &&
+        issues.edges.map(({ node }, i) => {
           ///////////////////////////////
           // render an image, or a box //
           ///////////////////////////////
+
           let articleBox
-          if (node.relationships.field_article_media) {
+          if (node.relationships.field_issue_media) {
             articleBox = (
               <Img
                 key={
-                  node.relationships.field_article_media[0].relationships
+                  node.relationships.field_issue_media[0].relationships
                     .field_media_image.localFile.childImageSharp.id
                 }
                 fluid={
-                  node.relationships.field_article_media[0].relationships
+                  node.relationships.field_issue_media[0].relationships
                     .field_media_image.localFile.childImageSharp.fluid
                 }
                 css={css`
@@ -93,46 +93,23 @@ const ArticleFeed = ({ articles }) => {
             )
           }
 
-          ////////////////////
-          // vary the width //
-          ////////////////////
-
-          let columns = 4
-          let boxWidths = [1 / columns, 2 / columns]
-          let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
-
-          if (boxCount > columns) {
-            rowWidth = 0
-            boxCount = 1
-          }
-          if (rowWidth >= columns) {
-            rowWidth = 0
-            boxCount = 1
-          }
-
-          if (rowWidth >= columns - 1) {
-            box = 1 / 4
-          }
-          rowWidth += box / (1 / columns)
-
-          boxCount++
           return (
             <Box
               p={[0, 2, 2]}
               fontSize={4}
-              width={[1, 1 / 2, box]}
+              width={[1, 1 / 2]}
               color="white"
               // bg="lightgrey"
               // flex="1 1 auto"
               alignSelf
-
               key={i}
-              css={[FlexArticle, GridBoxContainer, ArticleLink ]}
+              css={[FlexArticle, GridBoxContainer, ArticleLink]}
             >
               <Link to={`${node.path.alias}`}>
                 <article css={GridBox} key={node.id}>
-                  <section css={ArticleDate}>{node.field_date}</section>
                   {articleBox}
+                  <section css={ArticleDate}>{node.field_date}</section>
+
                   <h3 css={[GridHeader, Byline]}>{node.field_byline}</h3>
                 </article>
               </Link>
@@ -143,10 +120,10 @@ const ArticleFeed = ({ articles }) => {
   )
 }
 
-export default ArticleFeed
+export default IssueFeed
 
 export const query = graphql`
-  fragment ArticleFeed on node__article {
+  fragment IssueFeed on node__issue {
     id
     drupal_id
     title
@@ -163,19 +140,13 @@ export const query = graphql`
     field_date(formatString: "MMMM YYYY")
     field_byline
     relationships {
-      field_issue_reference {
-        drupal_id
-      }
-      field_article_media {
+      field_issue_media {
         relationships {
           field_media_image {
             localFile {
               childImageSharp {
                 id
-                fluid(
-                  maxWidth: 300
-                  quality: 75
-                  ) {
+                fluid(maxWidth: 900) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -190,7 +161,7 @@ export const query = graphql`
 
 // do we use the featured image?
 
-// a better idea might be to ues the first image of the media. 
+// a better idea might be to ues the first image of the media.
 // Makes more sense perhaps as we often dont have a featured image.
 
 // field_article_featured_image {

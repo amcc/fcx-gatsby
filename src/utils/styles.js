@@ -54,6 +54,9 @@ export const BorderRadius = `border-radius: ${RadiusTL} ${RadiusTR} ${RadiusBR} 
 const GridHeaderSize = `80%`
 const GridHeaderSizeMobile = `70%`
 
+export const LinkColour = `#E8F1F9`;
+export const HeaderBarColour = `#A6A6AD`;
+
 // rebass grid breakpoints
 // 40em, 52em, 64em
 export const GlobalStyle = props => (
@@ -126,10 +129,11 @@ export const GlobalStyle = props => (
       }
       body {
         margin: 0;
-        background: #fefefe;
+        background: rgb(247,248,249);
       }
       h1 {
-        font-weight: 600;
+        font-weight: 400;
+        margin: ${rhythm(2)} 0;
         font-family: "lunch22", Helvetica, Arial, sans-serif;
       }
       h2 {
@@ -270,7 +274,7 @@ export const GridBox = css`
   max-width: 960px;
   /* padding: 0.5rem 0; */
   /* margin-bottom: ${rhythm(1)}; */
-  background: white;
+  /* background: white; */
 
   /* ${BoxShadow};
   ${BorderRadius}; */
@@ -335,4 +339,18 @@ export const SearchBox = css`
     margin-top: 1.6rem;
     left: 0;
   }
+`
+export const SectionHeader = styled.div`
+  border-bottom: 1px solid gray;
+  padding: ${rhythm(1 / 2)} 0;
+  color: ${HeaderBarColour};
+  /* color: red; */
+  a {
+    color: ${HeaderBarColour};
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  margin: ${rhythm(2)} 0;
 `
