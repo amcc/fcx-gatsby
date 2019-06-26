@@ -9,6 +9,7 @@ import { Flex, Box } from "@rebass/grid/emotion"
 import { css } from "@emotion/core"
 import { HeaderBarColour, SectionHeader } from "../utils/styles"
 import { rhythm } from "../utils/typography"
+import { BiggerText } from "../utils/styles"
 
 const DateBox = css`
   text-align: right;
@@ -22,15 +23,8 @@ const IssueImage = css`
   display: block;
 `
 const ArticleTemplate = ({ data }) => {
-
   const article = data.nodeArticle
-  console.log(article)
 
-  if (article.relationships.field_article_featured_image) {
-    console.log(article.relationships.field_article_featured_image)
-  }
-
-  
   return (
     <Layout>
       <SEO title={`FCX | ` + article.title} />
@@ -54,7 +48,7 @@ const ArticleTemplate = ({ data }) => {
         // py={4}
         mx={4}
       >
-        <Box width={[1]} my={4} px={6} css={Title}>
+        <Box width={[1]} my={[1, 2, 4]} px={[1, 3, 6]} css={Title}>
           <h1>{article.title}</h1>
         </Box>
 
@@ -73,13 +67,13 @@ const ArticleTemplate = ({ data }) => {
         <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
           {article.field_byline && (
             <div
+              css={BiggerText}
               dangerouslySetInnerHTML={{
                 __html: article.field_byline,
               }}
             />
           )}
         </Box>
-        
 
         {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
         {article.relationships &&
@@ -133,10 +127,11 @@ const ArticleTemplate = ({ data }) => {
               </Box>
             )
           )}
-          <Box width={[1]} px={[1, 2, 4]} my={4}>
+        <Box width={[1]} px={[1, 2, 4]} my={4}>
           <Box width={[1, 1 / 2]}>
             {article.body && (
               <div
+                css={BiggerText}
                 dangerouslySetInnerHTML={{
                   __html: article.body.processed,
                 }}

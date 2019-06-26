@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
-import { HeaderBarColour, SectionHeader } from "../utils/styles"
+import { HeaderBarColour, SectionHeader, BiggerText } from "../utils/styles"
 import ArticleFeed from "../components/articleFeed"
 
 const DownloadShare = css`
@@ -65,7 +65,7 @@ const IssueTemplate = ({ data }) => {
         // py={4}
         mx={4}
       >
-        <Box width={[1]} my={4} px={6} css={Title}>
+        <Box width={[1]} my={[1, 2, 4]} px={[1, 3, 6]} css={Title}>
           <h1>{issue.title}</h1>
         </Box>
 
@@ -82,6 +82,7 @@ const IssueTemplate = ({ data }) => {
         <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
           {issue.field_byline && (
             <div
+              css={BiggerText}
               dangerouslySetInnerHTML={{
                 __html: issue.field_byline,
               }}
@@ -103,6 +104,7 @@ const IssueTemplate = ({ data }) => {
           <Box width={[1, 1 / 2]}>
             {issue.body && (
               <div
+                css={BiggerText}
                 dangerouslySetInnerHTML={{
                   __html: issue.body.processed,
                 }}

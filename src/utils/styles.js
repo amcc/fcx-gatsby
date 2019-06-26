@@ -162,6 +162,10 @@ export const GlobalStyle = props => (
   />
 )
 
+export const BiggerText = css`
+  font-size: 20px;
+`
+
 export const StyledImg = styled(Img)`
   max-width: 100%;
   margin-left: 0;

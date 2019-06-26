@@ -18,7 +18,7 @@ import {
 import Search from "./search"
 
 const searchIndices = [
-  { name: `Articles`, title: `Articles`, hitComp: `ArticleHit` },
+  { name: `Articles`, title: `Feed`, hitComp: `ArticleHit` },
   { name: `Issues`, title: `Issues`, hitComp: `IssueHit` },
 ]
 
@@ -64,7 +64,7 @@ const homeTitle = css`
 `
 
 const navBar = css`
-text-transform: uppercase;
+  text-transform: uppercase;
   transition: all 0.3s;
   /* float: right; */
   padding-top: 2rem;
@@ -392,6 +392,19 @@ const Header = class extends React.Component {
                       <ul className="sidebarMenuInner">
                         <li css={sidebarListItem}>
                           <Link
+                            to="/feed"
+                            css={css`
+                              color: black;
+                              text-decoration: none;
+                            `}
+                            onClick={() => this.unCheck("sidebarToggle")}
+                            activeStyle={{ color: "lightgrey" }}
+                          >
+                            <div css={sidebarlink}>Feed</div>
+                          </Link>
+                        </li>
+                        <li css={sidebarListItem}>
+                          <Link
                             to="/issues"
                             css={css`
                               color: black;
@@ -403,19 +416,7 @@ const Header = class extends React.Component {
                             <div css={sidebarlink}>Issues</div>
                           </Link>
                         </li>
-                        <li css={sidebarListItem}>
-                          <Link
-                            to="/articles"
-                            css={css`
-                              color: black;
-                              text-decoration: none;
-                            `}
-                            onClick={() => this.unCheck("sidebarToggle")}
-                            activeStyle={{ color: "lightgrey" }}
-                          >
-                            <div css={sidebarlink}>Articles</div>
-                          </Link>
-                        </li>
+
                         <li css={sidebarListItem}>
                           <Link
                             to="/about"

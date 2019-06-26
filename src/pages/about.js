@@ -10,24 +10,51 @@ import {
   HeaderOffset,
   HeaderOffsetMobile,
   HeaderOffsetMobileBig,
+  BiggerText,
 } from "../utils/styles"
 import styled from "@emotion/styled"
 import HomeVideo from "../components/homeVideo"
 
-const AboutText = styled.div`
+const AboutVideo = css`
   position: absolute;
-  top: ${HeaderOffsetMobile - 8 + "px"};
+  top: 0;
+  z-index: 1;
+`
+const AboutText = styled.div`
+  /* top: ${HeaderOffsetMobile - 8 + "px"};
   @media (min-width: 40em) {
     top: ${HeaderOffsetMobileBig + "px"};
   }
   @media (min-width: 52em) {
     top: ${HeaderOffset + "px"};
+  } */
+  position: relative;
+  margin-top: -60vh;
+  @media (min-width: 40em) {
+    margin-top: -70vh;
   }
-  z-index: 1;
+  z-index: 20;
   height: 100%;
   width: 100%;
 `
-
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  /* margin-top: -85vh; */
+  z-index: 10;
+  /* background: red; */
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2),
+    rgb(247, 248, 249),
+    rgb(247, 248, 249)
+  );
+  height: 100vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+`
 const RightBox = css`
   text-align: right;
 `
@@ -43,15 +70,16 @@ class About extends Component {
         <SEO title="Issues" />
         <HomeVideo
           video="fcx-bg-V3.mp4"
-          css={css`
-            margin-top: -80px;
-            position: relative;
-            z-index: 0;
-          `}
+          css={AboutVideo}
         />
+        <Overlay />
         <AboutText>
           <Flex mx={[0, -2, -2]} flexWrap="wrap">
-            <Box width={1 / 2} css={LeftBox}>
+            <Box
+              width={[3 / 4, 1 / 2]}
+              px={[2, 1, 0]}
+              css={[LeftBox, BiggerText]}
+            >
               <h1>ABOUT</h1>
               <p>
                 <strong>The Fashion Communication Exchange (FCX)</strong> is a

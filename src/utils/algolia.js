@@ -38,7 +38,7 @@ const queries = [
   {
     query: articleQuery,
     transformer: ({ data }) => flatten(data.allNodeArticle.edges),
-    indexName: `Articles`,
+    indexName: `Feed`,
     settings,
   },
   {
