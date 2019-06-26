@@ -29,7 +29,7 @@ const IssueTemplate = ({ data }) => {
   // console.log(data)
   const issue = data.nodeIssue
   const articles = issue.relationships.node__article
-  console.log(articles)
+
   return (
     <Layout>
       <SEO title={`FCX | ` + issue.title} />
