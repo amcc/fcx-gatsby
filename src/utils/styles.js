@@ -30,9 +30,9 @@ import {
 } from "./fonts"
 
 const MaxWidth = `1400px`
-export const HeaderOffset = "60"
-export const HeaderOffsetMobileBig = "56"
-export const HeaderOffsetMobile = "50"
+export const HeaderOffset = "80"
+export const HeaderOffsetMobileBig = "76"
+export const HeaderOffsetMobile = "70"
 
 export const Accent = `SlateGray`
 export const SubtleAccent = `#eee`
@@ -130,11 +130,13 @@ export const GlobalStyle = props => (
       body {
         margin: 0;
         background: rgb(247,248,249);
+        font-weight: 200;
       }
       h1 {
         font-weight: 400;
         margin: ${rhythm(2)} 0;
         font-family: "lunch22", Helvetica, Arial, sans-serif;
+        font-size: 2.1em;
       }
       h2 {
         font-weight: 400;
@@ -352,5 +354,10 @@ export const SectionHeader = styled.div`
   a:hover {
     text-decoration: underline;
   }
+  margin: ${rhythm(2)} 0;
+`
+export const FeedHeader = styled.div`
+  font-size: 1.8em;
+  font-weight: 400;
   margin: ${rhythm(2)} 0;
 `

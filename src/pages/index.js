@@ -15,9 +15,7 @@ import styled from "@emotion/styled"
 import ArticleFeed from "../components/articleFeed"
 // import HeroThree from "../components/heroThree"
 
-import {
-  PaddedMobile,
-} from "../utils/styles"
+import { PaddedMobile, FeedHeader } from "../utils/styles"
 
 // import { Video } from "cloudinary-react"
 
@@ -41,7 +39,7 @@ const HeroTextOverlayInner = styled.div`
   position: relative;
   height: 60%;
   width: 100%;
-  color: white;
+  color: black;
   a {
     color: white;
   }
@@ -56,7 +54,7 @@ const HeroTextOverlayInner = styled.div`
     color: white;
     margin: 0 auto;
   }
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 
   @media (min-width: 40em) {
     padding: 18vh 0vw 0 0vw;
@@ -96,7 +94,7 @@ const CurrentIssue = styled.div`
   /* padding: 10vh 0 0 0; */
   a {
     text-decoration: none;
-    color: white;
+    color: black;
   }
   h2 {
     text-transform: uppercase;
@@ -121,9 +119,8 @@ const HomeTitle = css`
   text-transform: uppercase;
   text-align: center;
 
-    font-weight: 400;
-    font-family: "lunch24", Helvetica, Arial, sans-serif;
-  
+  font-weight: 400;
+  font-family: "lunch24", Helvetica, Arial, sans-serif;
 `
 
 const HomeTitleFashion = css`
@@ -157,14 +154,13 @@ const HomeTitleExchange = css`
 `
 
 class IndexPage extends Component {
-
   render() {
     // const issues = this.props.data.allNodeIssue
     const issue = this.props.data.allNodeIssue.edges[0].node
 
     const articleNodes = this.props.data.allNodeArticle.edges
     const articles = []
-    articleNodes.map(({node} , i) => {
+    articleNodes.map(({ node }, i) => {
       articles.push(node)
     })
 
@@ -197,15 +193,15 @@ class IndexPage extends Component {
                 </Box>
               </Flex>
             </HeroTextOverlayInner>
-            <CurrentIssue css={PaddedMobile}>
-              <Link to={`${issue.path.alias}`}>
-                <h2>current issue</h2>
-                <p>{issue.field_byline}</p>
-              </Link>
-            </CurrentIssue>
           </HeroTextOverlay>
-          ß
+          <CurrentIssue css={PaddedMobile}>
+            <Link to={`${issue.path.alias}`}>
+              <h2>current issue</h2>
+              <p>{issue.title}</p>
+            </Link>
+          </CurrentIssue>
         </HeroContainer>
+        <FeedHeader>RECENT FEED</FeedHeader>
         <ArticleFeed articles={articles} />
       </Layout>
     )
@@ -246,10 +242,7 @@ export const pageQuery = graphql`
                   localFile {
                     childImageSharp {
                       id
-                      fluid(
-                        maxWidth: 1400
-                        quality: 75
-                        ) {
+                      fluid(maxWidth: 1400, quality: 75) {
                         ...GatsbyImageSharpFluid
                       }
                     }

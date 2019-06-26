@@ -20,7 +20,6 @@ class Feed extends Component {
     articleNodes.map(({node} , i) => {
       articles.push(node)
     })
-    console.log(articles);
 
     return (
       <Layout>

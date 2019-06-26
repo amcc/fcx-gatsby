@@ -27,7 +27,6 @@ const Byline = css`
 const ArticleFeed = ({ articles }) => {
   let boxCount = 1
   let rowWidth = 0
-  console.log(articles[0])
   return (
     <Flex
       mx={[0, -2, -2]}

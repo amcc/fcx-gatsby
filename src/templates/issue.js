@@ -16,6 +16,14 @@ const DownloadShare = css`
 const RelatedArticles = css`
   font-size: 1.8em;
 `
+const Title = css`
+  text-align: center;
+`
+
+const IssueImage = css`
+  margin: ${rhythm(1)} 0;
+  display: block;
+`
 
 const IssueTemplate = ({ data }) => {
   // console.log(data)
@@ -30,11 +38,11 @@ const IssueTemplate = ({ data }) => {
           // mx={[0, -1, -2]}
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 2]} px={[0, 1, 2]} color={`black`}>
+          <Box width={[1 / 2]} px={[0, 1, 2]} color={`black`}>
             <Link to={`/issues/`}>ISSUES</Link> / ISSUE #
             {issue.field_issue_number}
           </Box>
-          <Box width={[1, 1 / 2]} px={[0, 1, 2]} css={DownloadShare}>
+          <Box width={[1 / 2]} px={[0, 1, 2]} css={DownloadShare}>
             {issue.relationships.field_issue_pdf && (
               <span>
                 <a
@@ -57,11 +65,11 @@ const IssueTemplate = ({ data }) => {
         // py={4}
         mx={4}
       >
-        <Box width={[1]}>
+        <Box width={[1]} my={4} px={6} css={Title}>
           <h1>{issue.title}</h1>
         </Box>
 
-        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
+        <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
           {issue.relationships.field_issue_featured.map(({ relationships }) => (
             <Img
               key={relationships.field_media_image.localFile.childImageSharp.id}
@@ -71,28 +79,35 @@ const IssueTemplate = ({ data }) => {
             />
           ))}
         </Box>
-        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
-          {issue.body && (
+        <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
+          {issue.field_byline && (
             <div
               dangerouslySetInnerHTML={{
-                __html: issue.body.processed,
+                __html: issue.field_byline,
               }}
             />
           )}
         </Box>
-        <Box width={[1]}>
-          <Box width={[1]} px={[0, 1, 2]}>
-            {issue.relationships.field_issue_media.map(({ relationships }) => (
-              <Img
-                key={
-                  relationships.field_media_image.localFile.childImageSharp.id
-                }
-                fluid={
-                  relationships.field_media_image.localFile.childImageSharp
-                    .fluid
-                }
+        <Box width={[1]} px={[1, 2, 4]} my={4}>
+          {issue.relationships.field_issue_media.map(({ relationships }) => (
+            <Img
+              css={IssueImage}
+              key={relationships.field_media_image.localFile.childImageSharp.id}
+              fluid={
+                relationships.field_media_image.localFile.childImageSharp.fluid
+              }
+            />
+          ))}
+        </Box>
+        <Box width={[1]} px={[1, 2, 4]} my={4}>
+          <Box width={[1, 1 / 2]}>
+            {issue.body && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: issue.body.processed,
+                }}
               />
-            ))}
+            )}
           </Box>
         </Box>
       </Flex>

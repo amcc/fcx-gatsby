@@ -3,156 +3,103 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import Img from "gatsby-image"
-
-// import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
-// import { rhythm } from "../utils/typography"
-// import HeroImage from "../components/heroimage";
-// import { FaChevronDown } from "react-icons/fa";
-// import styled from "@emotion/styled"
-// import { css } from "@emotion/core"
-// import HomeVideo from "../components/homeVideo"
+import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
+import { rhythm } from "../utils/typography"
+import { css } from "@emotion/core"
 import {
-  // Image,
-  // Video,
-  // Transformation,
-  // CloudinaryContext,
-} from "cloudinary-react"
-// import styled from "@emotion/styled";
+  HeaderOffset,
+  HeaderOffsetMobile,
+  HeaderOffsetMobileBig,
+} from "../utils/styles"
+import styled from "@emotion/styled"
+import HomeVideo from "../components/homeVideo"
 
-// import { GridBoxContainer, GridBox, GridHeader } from "../utils/styles"
+const AboutText = styled.div`
+  position: absolute;
+  top: ${HeaderOffsetMobile - 8 + "px"};
+  @media (min-width: 40em) {
+    top: ${HeaderOffsetMobileBig + "px"};
+  }
+  @media (min-width: 52em) {
+    top: ${HeaderOffset + "px"};
+  }
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+`
+
+const RightBox = css`
+  text-align: right;
+`
+const LeftBox = css`
+  /* text-align: right; */
+`
 
 class About extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = {
-    //    field: value
-    // }
-    //creates a reference for your element to use
-    this.myDivToFocus = React.createRef()
-  }
-
-  // load the smoothscroll here as it requires window:
-  // https://github.com/webpack/react-starter/issues/37
-  componentDidMount() {
-    const smoothscroll = require("smoothscroll-polyfill")
-    // kick off the polyfill!
-    // this hopefully fixes ios smooth
-    smoothscroll.polyfill()
-  }
-
-  handleOnClick = event => {
-    //.current is verification that your element has rendered
-    if (this.myDivToFocus.current) {
-      this.myDivToFocus.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    }
-  }
-
   render() {
     // const data = this.props.data
     return (
       <Layout>
         <SEO title="Issues" />
-
-        <h1>About</h1>
-        {/* <Video publicId="Comp_2_2_c6wxxb" /> */}
-        {/* <HomeVideo 
-          video={`Comp_2_2_c6wxxb`}
+        <HomeVideo
+          video="fcx-bg-V3.mp4"
           css={css`
-            mix-blend-mode: difference;
             margin-top: -80px;
+            position: relative;
+            z-index: 0;
           `}
-         /> */}
+        />
+        <AboutText>
+          <Flex mx={[0, -2, -2]} flexWrap="wrap">
+            <Box width={1 / 2} css={LeftBox}>
+              <h1>ABOUT</h1>
+              <p>
+                <strong>The Fashion Communication Exchange (FCX)</strong> is a
+                digital platform where issues around fashion and fashion
+                communication are discussed across a diverse community which
+                includes: the fashion industry, UAL academics and the student
+                body.
+              </p>
+              <p>
+                FCX produces an ‘Issue’ bi-annually, sharing knowledge
+                co-created by students, academics and industry around a
+                research-informed discussion, theme or trend that is pertinent
+                to the contemporary landscape of fashion communication.
+              </p>
+              <p>
+                The Feed disseminates insights, activity and related research
+                and news clustered around the common 'Issue' we are presently
+                interrogating.
+              </p>
+              <p>
+                FCX is moderated by the Communication Programme within the
+                School of Media and Communication, London College of Fashion,
+                UAL.
+              </p>
+              <p>
+                For editorial enquires contact: Charlotte Troy
+                c.troy@fashion.arts.ac.uk.
+                <br />
+                For collaborative opportunities contact: Daniel
+                Caulfield-Sriklad d.caulfieldsriklad@fashion.arts.ac.uk.
+              </p>
+              <h3>WHO WE’VE COLLABORATED WITH</h3>
+              <p>
+                The Centre for Sustainable Fashion, UAL
+                <br />
+                H&M
+                <br />
+                NOW Gallery
+                <br />
+                Phoenix Magazine
+              </p>
+            </Box>
+            <Box width={1 / 2} css={RightBox} />
+          </Flex>
+        </AboutText>
       </Layout>
     )
   }
 }
 
 export default About
-
-export const pageQuery = graphql`
-  query {
-    allNodeArticle(sort: { fields: [created], order: DESC }, limit: 4) {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-          created
-          relationships {
-            field_article_media {
-              relationships {
-                field_media_image {
-                  localFile {
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 300) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    allNodeIssue(sort: { fields: [created], order: DESC }) {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-          created
-          relationships {
-            field_issue_media {
-              relationships {
-                field_media_image {
-                  localFile {
-                    childImageSharp {
-                      id
-                      fluid(maxWidth: 900) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            node__article {
-              title
-              path {
-                alias
-              }
-              relationships {
-                field_article_media {
-                  relationships {
-                    field_media_image {
-                      localFile {
-                        childImageSharp {
-                          id
-                          fluid(maxWidth: 400) {
-                            ...GatsbyImageSharpFluid
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`

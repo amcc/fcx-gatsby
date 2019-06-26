@@ -12,6 +12,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 // import "./layout.css"
 import {GlobalStyle, MainWrapper} from "../utils/styles"
+import Footer from "./footer"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -30,11 +31,8 @@ const Layout = ({ children }) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <MainWrapper>
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}
-            {` `}
-            <a href="https://www.gatsbyjs.org">Fashion Communication Exchange</a>
-          </footer>
+
+          <Footer />
         </MainWrapper>
       </>
     )}

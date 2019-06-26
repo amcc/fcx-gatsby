@@ -12,6 +12,7 @@ import {
   HeaderOffsetMobileBig,
   MainWrapper,
   SearchBox,
+  HeaderBarColour,
 } from "../utils/styles"
 // import { rhythm } from "../utils/typography";
 import Search from "./search"
@@ -32,6 +33,10 @@ const headerHeight = css`
     height: ${HeaderOffset + "px"};
   }
 `
+const HeaderStyles = css`
+  font-size: 16px;
+`
+
 const homeTitle = css`
   transition: all 0.3s;
   /* float: left; */
@@ -259,7 +264,7 @@ const menuListItem = css`
   padding: 0.6rem 0.5rem 0.5rem 0rem;
   @media (min-width: 40em) {
     font-size: 120%;
-    padding: 1rem 0 0rem 1.5rem;
+    padding: 1rem 0 0rem 3rem;
   }
 `
 
@@ -267,15 +272,15 @@ const sidebarListItem = css`
   font-size: 80%;
   font-weight: 400;
   text-transform: uppercase;
-  background: tomato;
+  /* background: tomato; */
   /* text-decoration: underline; */
   a:hover > div {
     color: white;
-    background: chocolate;
+    background: ${HeaderBarColour};
   }
   a:active > div {
     color: white;
-    background: chocolate;
+    background: ${HeaderBarColour};
   }
 `
 
@@ -322,7 +327,7 @@ const Header = class extends React.Component {
             zIndex: 1000,
           }}
         >
-          <header css={headerHeight}>
+          <header css={[headerHeight, HeaderStyles]}>
             <MainWrapper>
               <Flex flexWrap="wrap">
                 <Box width={[1 / 5, 1 / 5, 2 / 12]}>
@@ -341,7 +346,7 @@ const Header = class extends React.Component {
                 </Box>
 
                 <Box
-                  width={[1 / 5, 1 / 5, 8 / 12]}
+                  width={[1 / 5, 1 / 5, 9 / 12]}
                   css={css`
                     text-align: left;
                     @media (min-width: 40em) {
@@ -428,7 +433,7 @@ const Header = class extends React.Component {
                     </div>
                   </nav>
                 </Box>
-                <Box width={[3 / 5, 3 / 5, 2 / 12]}>
+                <Box width={[3 / 5, 3 / 5, 1 / 12]}>
                   <div css={SearchBox}>
                     <Search collapse indices={searchIndices} />
                   </div>

@@ -8,9 +8,18 @@ import Video from "../components/video"
 import { Flex, Box } from "@rebass/grid/emotion"
 import { css } from "@emotion/core"
 import { HeaderBarColour, SectionHeader } from "../utils/styles"
+import { rhythm } from "../utils/typography"
 
 const DateBox = css`
   text-align: right;
+`
+const Title = css`
+  text-align: center;
+`
+
+const IssueImage = css`
+  margin: ${rhythm(1)} 0;
+  display: block;
 `
 const ArticleTemplate = ({ data }) => {
 
@@ -30,10 +39,10 @@ const ArticleTemplate = ({ data }) => {
           // mx={[0, -1, -2]}
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 2]} px={[0, 1, 2]} color={`black`}>
+          <Box width={[1 / 2]} px={[0, 1, 2]} color={`black`}>
             <Link to={`/feed/`}>BACK TO FEED</Link>
           </Box>
-          <Box width={[1, 1 / 2]} px={[0, 1, 2]} css={DateBox}>
+          <Box width={[1 / 2]} px={[0, 1, 2]} css={DateBox}>
             {article.field_date}
           </Box>
         </Flex>
@@ -45,11 +54,11 @@ const ArticleTemplate = ({ data }) => {
         // py={4}
         mx={4}
       >
-        <Box width={[1]}>
+        <Box width={[1]} my={4} px={6} css={Title}>
           <h1>{article.title}</h1>
         </Box>
 
-        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
+        <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
           {article.relationships &&
             article.relationships.field_article_featured_image &&
             article.relationships.field_article_featured_image.map(
@@ -61,15 +70,16 @@ const ArticleTemplate = ({ data }) => {
               )
             )}
         </Box>
-        <Box width={[1, 1, 1 / 2]} px={[0, 1, 2]}>
-          {article.body && (
+        <Box width={[1, 1, 1 / 2]} px={[1, 2, 4]} my={4}>
+          {article.field_byline && (
             <div
               dangerouslySetInnerHTML={{
-                __html: article.body.processed,
+                __html: article.field_byline,
               }}
             />
           )}
         </Box>
+        
 
         {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
         {article.relationships &&
@@ -91,10 +101,11 @@ const ArticleTemplate = ({ data }) => {
                   key={i}
                 >
                   <Img
-                    css={css`
-                      height: 100%;
-                      width: auto;
-                    `}
+                    // css={css`
+                    //   height: 100%;
+                    //   width: auto;
+                    // `}
+                    css={IssueImage}
                     key={
                       relationships.field_media_image.localFile.childImageSharp
                         .id
@@ -122,6 +133,17 @@ const ArticleTemplate = ({ data }) => {
               </Box>
             )
           )}
+          <Box width={[1]} px={[1, 2, 4]} my={4}>
+          <Box width={[1, 1 / 2]}>
+            {article.body && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: article.body.processed,
+                }}
+              />
+            )}
+          </Box>
+        </Box>
       </Flex>
     </Layout>
   )
