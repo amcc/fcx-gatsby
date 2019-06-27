@@ -27,7 +27,7 @@ const headerHeight = css`
   transition: all 0.3s;
   height: ${HeaderOffsetMobile - 8 + "px"};
   @media (min-width: 40em) {
-    height: ${HeaderOffsetMobileBig + "px"};
+    height: ${HeaderOffsetMobile -8 + "px"};
   }
   @media (min-width: 52em) {
     height: ${HeaderOffset + "px"};
@@ -70,12 +70,13 @@ const navBar = css`
   padding-top: 2rem;
   padding-left: 0.8rem;
   padding-bottom: 0.1rem;
+  font-weight: 600;
   /* display: none; */
   @media (min-width: 40em) {
     /* display: block; */
     padding-top: 1.5rem;
     padding-bottom: 0.3rem;
-    padding-right: 0.8rem;
+    padding-right: 1.4rem;
 
   }
 
@@ -107,8 +108,8 @@ const navBar = css`
       padding: 20px 10px;
       width: ${headerScaler * 1.2}px;
       height: ${headerScaler * 1.4}px;
-      top: -1px;
-      right: 23px;
+      top: 3px;
+      right: 33px;
     }
     @media (min-width: 52em) {
       display: none;
@@ -190,9 +191,9 @@ const navBar = css`
     top: 0;
     width: 100vw;
     height: 100vh;
-    margin-top: ${HeaderOffsetMobile - 10 + "px"};
+    margin-top: ${HeaderOffsetMobile - 8 + "px"};
     @media (min-width: 40em) {
-      margin-top: ${HeaderOffsetMobileBig - 10 + "px"};
+      margin-top: ${HeaderOffsetMobile - 8 + "px"};
     }
     @media (min-width: 52em) {
       margin-top: ${HeaderOffset - 10 + "px"};

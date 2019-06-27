@@ -30,7 +30,7 @@ const HeroTextOverlay = styled.div`
   position: absolute;
   top: 0;
   z-index: 1;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `
 const HeroTextOverlayInner = styled.div`
@@ -84,7 +84,7 @@ const CurrentIssue = styled.div`
   position: absolute;
   /* mix-blend-mode: difference; */
   z-index: 100;
-  bottom: 0vh;
+  bottom: 15vh;
   font-weight: 200;
   width: 80%;
   p {
@@ -170,7 +170,7 @@ class IndexPage extends Component {
         <HeroContainer css={HeroStyles}>
           {/* <HeroThree /> */}
           <HomeVideo
-            video="fcx-bg-V3.mp4"
+            video="fcx-video.mp4"
             css={css`
               margin-top: -80px;
               position: relative;

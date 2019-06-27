@@ -243,14 +243,14 @@ export const ArticleLink = css`
 `
 export const backgroundColours = [
   "orangered",
-  "tomato",
+  "coral",
   "deeppink",
   "yellowgreen",
   "olivedrab",
   // "lime",
   "cornflowerblue",
-  "dodgerblue",
-  "blue",
+  "lightcyan",
+  "skyblue",
   "slategrey",
   "chocolate",
   // "cyan",
@@ -337,13 +337,13 @@ export const GridSectionHeader = css`
 export const SearchBox = css`
   position: relative;
   margin-top: 1.2rem;
-  left: -2rem;
+  left: -5rem;
   @media (min-width: 40em) {
-    margin-top: 0.8rem;
+    margin-top: 1.2rem;
     /* left: -2rem; */
   }
   @media (min-width: 52em) {
-    margin-top: 1.6rem;
+    margin-top: 1.5rem;
     left: 0;
   }
 `
