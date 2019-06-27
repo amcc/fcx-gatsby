@@ -33,7 +33,6 @@ const CustomHeroImage = styled.div`
 const HomeVideo = ({ video }) => {
   return (
     <CustomHeroImage>
-
       <div
         css={css`
           display: -webkit-flex;
@@ -44,17 +43,15 @@ const HomeVideo = ({ video }) => {
           justify-content: center;
           overflow: hidden;
           video {
-
-            /* height: 100vh;
-            width: auto; */
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
-            @media (min-width: 52em) {
+            /* @media (min-width: 52em) {
               width: 100vw;
-              height: auto;
-            }
+              height: 100vh;
+            } */
           }
         `}
-        
         dangerouslySetInnerHTML={{
           __html: `
         <video autoplay loop muted playsinline>

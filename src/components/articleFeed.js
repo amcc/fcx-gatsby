@@ -38,7 +38,31 @@ const ArticleFeed = ({ articles }) => {
       `}
     >
       {articles &&
-        articles.map((node , i) => {
+        articles.map((node, i) => {
+          ////////////////////
+          // vary the width //
+          ////////////////////
+
+          // let columns = 4
+          // let boxWidths = [1 / columns, 2 / columns]
+          // let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
+
+          // if (boxCount > columns) {
+          //   rowWidth = 0
+          //   boxCount = 1
+          // }
+          // if (rowWidth >= columns) {
+          //   rowWidth = 0
+          //   boxCount = 1
+          // }
+
+          // if (rowWidth >= columns - 1) {
+          //   box = 1 / 4
+          // }
+          // rowWidth += box / (1 / columns)
+
+          // boxCount++
+
           ///////////////////////////////
           // render an image, or a box //
           ///////////////////////////////
@@ -63,7 +87,7 @@ const ArticleFeed = ({ articles }) => {
           } else {
             if (node.body) {
               // trim the body
-              var maxLength = 500 // maximum number of characters to extract
+              var maxLength = 330 // maximum number of characters to extract
               //trim the string to the maximum length
               var trimmedBody = node.body.processed.substr(0, maxLength)
               //re-trim if we are in the middle of a word
@@ -71,6 +95,9 @@ const ArticleFeed = ({ articles }) => {
                 0,
                 Math.min(trimmedBody.length, trimmedBody.lastIndexOf(" "))
               )
+              trimmedBody = node.body.processed
+              // give it a larger box
+              // box = 1 / 2
             }
 
             articleBox = (
@@ -82,51 +109,35 @@ const ArticleFeed = ({ articles }) => {
                   height: 100%;
                   width: auto;
                   padding: ${rhythm(1)};
-                  color: white;
+                  color: black;
                   overflow: hidden;
                   text-decoration: none;
-                  font-size: 80%;
+                  font-size: 1em;
+                  font-weight: 600;
+                  line-height: 1.8rem;
+                  blockquote {
+                    color: black;
+                    font-size: 1em;
+                    font-weight: 600;
+                    line-height: 1.8rem;
+                  }
                 `}
                 dangerouslySetInnerHTML={{ __html: trimmedBody }}
               />
             )
           }
 
-          ////////////////////
-          // vary the width //
-          ////////////////////
-
-          let columns = 4
-          let boxWidths = [1 / columns, 2 / columns]
-          let box = boxWidths[Math.floor(Math.random() * boxWidths.length)]
-
-          if (boxCount > columns) {
-            rowWidth = 0
-            boxCount = 1
-          }
-          if (rowWidth >= columns) {
-            rowWidth = 0
-            boxCount = 1
-          }
-
-          if (rowWidth >= columns - 1) {
-            box = 1 / 4
-          }
-          rowWidth += box / (1 / columns)
-
-          boxCount++
           return (
             <Box
               p={[1, 2, 2]}
               fontSize={4}
-              width={[1, 1 / 2, box]}
+              width={[1, 1 / 2, 1 / 4, 1 / 5]}
               color="white"
               // bg="lightgrey"
               // flex="1 1 auto"
               alignSelf
-
               key={i}
-              css={[FlexArticle, GridBoxContainer, ArticleLink ]}
+              css={[FlexArticle, GridBoxContainer, ArticleLink]}
             >
               <Link to={`${node.path.alias}`}>
                 <article css={GridBox} key={node.id}>
@@ -171,10 +182,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 id
-                fluid(
-                  maxWidth: 300
-                  quality: 75
-                  ) {
+                fluid(maxWidth: 300, quality: 75) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -189,7 +197,7 @@ export const query = graphql`
 
 // do we use the featured image?
 
-// a better idea might be to ues the first image of the media. 
+// a better idea might be to ues the first image of the media.
 // Makes more sense perhaps as we often dont have a featured image.
 
 // field_article_featured_image {

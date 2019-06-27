@@ -336,10 +336,10 @@ export const GridSectionHeader = css`
 `
 export const SearchBox = css`
   position: relative;
-  margin-top: 1.2rem;
+  margin-top: 1.0rem;
   left: -5rem;
   @media (min-width: 40em) {
-    margin-top: 1.2rem;
+    margin-top: 1.1rem;
     /* left: -2rem; */
   }
   @media (min-width: 52em) {
@@ -364,5 +364,5 @@ export const SectionHeader = styled.div`
 export const FeedHeader = styled.div`
   font-size: 1.8em;
   font-weight: 400;
-  margin: ${rhythm(2)} 0;
+  margin: ${rhythm(2)} ${rhythm(1/2)};
 `

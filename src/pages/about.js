@@ -29,7 +29,7 @@ const AboutText = styled.div`
     top: ${HeaderOffset + "px"};
   } */
   position: relative;
-  margin-top: -60vh;
+  margin-top: -100vh;
   @media (min-width: 40em) {
     margin-top: -70vh;
   }
@@ -40,6 +40,7 @@ const AboutText = styled.div`
 const Overlay = styled.div`
   position: absolute;
   top: 0;
+  left: 0;
   /* margin-top: -85vh; */
   z-index: 10;
   /* background: red; */
@@ -50,13 +51,16 @@ const Overlay = styled.div`
     rgb(247, 248, 249),
     rgb(247, 248, 249)
   );
-  height: 100vh;
+  height: 120vh;
+  @media (min-width: 40em) {
+    height: 100vh;
+  }
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 `
 const RightBox = css`
-  text-align: right;
+  /* text-align: right; */
 `
 const LeftBox = css`
   /* text-align: right; */
@@ -68,19 +72,19 @@ class About extends Component {
     return (
       <Layout>
         <SEO title="Issues" />
-        <HomeVideo
-          video="fcx-bg-V3.mp4"
-          css={AboutVideo}
-        />
+        <HomeVideo video="fcx-video.mp4" css={AboutVideo} />
         <Overlay />
         <AboutText>
           <Flex mx={[0, -2, -2]} flexWrap="wrap">
+            <Box width={1} px={[3, 2, 2]}>
+              <h1>ABOUT</h1>
+            </Box>
             <Box
-              width={[3 / 4, 1 / 2]}
-              px={[2, 1, 0]}
+              width={[1, 1 / 2]}
+              pl={[3, 2]}
+              pr={[3, 4]}
               css={[LeftBox, BiggerText]}
             >
-              <h1>ABOUT</h1>
               <p>
                 <strong>The Fashion Communication Exchange (FCX)</strong> is a
                 digital platform where issues around fashion and fashion
@@ -105,12 +109,21 @@ class About extends Component {
                 UAL.
               </p>
               <p>
-                For editorial enquires contact: Charlotte Troy
-                c.troy@fashion.arts.ac.uk.
+                For editorial enquiries contact: Charlotte Troy <br />
+                <a href="mailto:c.troy@fashion.arts.ac.uk">c.troy@fashion.arts.ac.uk</a>
                 <br />
                 For collaborative opportunities contact: Daniel
-                Caulfield-Sriklad d.caulfieldsriklad@fashion.arts.ac.uk.
+                Caulfield-Sriklad
+                <br />
+                <a href="mailto:d.caulfieldsriklad@fashion.arts.ac.uk">d.caulfieldsriklad@fashion.arts.ac.uk</a>
               </p>
+            </Box>
+            <Box
+              width={[1, 1 / 2]}
+              pl={[3, 4]}
+              pr={[3, 2]}
+              css={[RightBox, BiggerText]}
+            >
               <h3>WHO WE’VE COLLABORATED WITH</h3>
               <p>
                 The Centre for Sustainable Fashion, UAL
@@ -122,7 +135,6 @@ class About extends Component {
                 Phoenix Magazine
               </p>
             </Box>
-            <Box width={1 / 2} css={RightBox} />
           </Flex>
         </AboutText>
       </Layout>

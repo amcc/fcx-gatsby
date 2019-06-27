@@ -170,7 +170,7 @@ class IndexPage extends Component {
         <HeroContainer css={HeroStyles}>
           {/* <HeroThree /> */}
           <HomeVideo
-            video="fcx-video.mp4"
+            video="/fcx-video.mp4"
             css={css`
               margin-top: -80px;
               position: relative;

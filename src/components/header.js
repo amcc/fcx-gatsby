@@ -27,7 +27,7 @@ const headerHeight = css`
   transition: all 0.3s;
   height: ${HeaderOffsetMobile - 8 + "px"};
   @media (min-width: 40em) {
-    height: ${HeaderOffsetMobile -8 + "px"};
+    height: ${HeaderOffsetMobile - 8 + "px"};
   }
   @media (min-width: 52em) {
     height: ${HeaderOffset + "px"};
@@ -61,6 +61,18 @@ const homeTitle = css`
   a:hover {
     text-decoration: none;
   }
+  img {
+    /* width: 500px; */
+    /* height: auto; */
+    padding-top: 6px;
+    @media (min-width: 40em) {
+      width: 67px;
+    }
+    @media (min-width: 52em) {
+      width: 85px;
+      padding-top: 7px
+    }
+  }
 `
 
 const navBar = css`
@@ -77,7 +89,6 @@ const navBar = css`
     padding-top: 1.5rem;
     padding-bottom: 0.3rem;
     padding-right: 1.4rem;
-
   }
 
   input[type="checkbox"]:checked ~ #sidebarMenu {
@@ -343,7 +354,10 @@ const Header = class extends React.Component {
                       `}
                     >
                       {/* {this.props.siteTitle} */}
-                      FCX
+                      <img
+                        src="/fcx-logo-colour.png"
+                        alt="Fashion Communication Exchange"
+                      />
                     </Link>
                   </h1>
                 </Box>
