@@ -247,10 +247,10 @@ export const backgroundColours = [
   "deeppink",
   "yellowgreen",
   "olivedrab",
-  "lime",
+  // "lime",
   "cornflowerblue",
   "dodgerblue",
-  "mediumslateblue",
+  "blue",
   "slategrey",
   "chocolate",
   // "cyan",
@@ -336,10 +336,11 @@ export const GridSectionHeader = css`
 `
 export const SearchBox = css`
   position: relative;
-  margin-top: 0.45rem;
-  left: -5rem;
+  margin-top: 1.2rem;
+  left: -2rem;
   @media (min-width: 40em) {
     margin-top: 0.8rem;
+    /* left: -2rem; */
   }
   @media (min-width: 52em) {
     margin-top: 1.6rem;

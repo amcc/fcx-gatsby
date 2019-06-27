@@ -43,7 +43,7 @@ const homeTitle = css`
   font-weight: 300;
   margin: 0;
   padding-left: 0.8rem;
-  padding-top: 0.3rem;
+  padding-top: 0.8rem;
   font-size: 200%;
   @media (min-width: 40em) {
     font-size: 200%;
@@ -75,6 +75,8 @@ const navBar = css`
     /* display: block; */
     padding-top: 1.5rem;
     padding-bottom: 0.3rem;
+    padding-right: 0.8rem;
+
   }
 
   input[type="checkbox"]:checked ~ #sidebarMenu {
@@ -95,7 +97,7 @@ const navBar = css`
     z-index: 99;
     /* height: 100%;
     width: 100%; */
-    top: 3px;
+    top: 12px;
     right: 14px;
     height: ${headerScaler}px;
     width: ${headerScaler}px;

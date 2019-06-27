@@ -117,7 +117,7 @@ const ArticleFeed = ({ articles }) => {
           boxCount++
           return (
             <Box
-              p={[0, 2, 2]}
+              p={[1, 2, 2]}
               fontSize={4}
               width={[1, 1 / 2, box]}
               color="white"

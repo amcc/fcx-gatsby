@@ -32,6 +32,7 @@ const ArticleTemplate = ({ data }) => {
         <Flex
           // mx={[0, -1, -2]}
           flexWrap="wrap"
+          px={[2,0]}
         >
           <Box width={[1 / 2]} px={[0, 1, 2]} color={`black`}>
             <Link to={`/feed/`}>BACK TO FEED</Link>
@@ -46,7 +47,7 @@ const ArticleTemplate = ({ data }) => {
         flexWrap="wrap"
         justifyContent="space-between"
         // py={4}
-        mx={4}
+        mx={[2,4]}
       >
         <Box width={[1]} my={[1, 2, 4]} px={[1, 3, 6]} css={Title}>
           <h1>{article.title}</h1>
