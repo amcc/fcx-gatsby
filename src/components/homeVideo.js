@@ -22,7 +22,7 @@ const CustomHeroImage = styled.div`
     /* height: 100vh; */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    margin-top: -${HeaderOffset}px;
+    /* margin-top: -${HeaderOffset}px; */
     > div,
     a > div {
       height: 100vh;

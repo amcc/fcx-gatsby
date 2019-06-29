@@ -57,16 +57,17 @@ const HeroTextOverlayInner = styled.div`
   /* mix-blend-mode: difference; */
 
   @media (min-width: 40em) {
-    padding: 18vh 0vw 0 0vw;
+    padding: 5vh 0vw 0 0vw;
     /* font-size: 150%; */
     h1 {
-      font-size: 250%;
+      font-size: 280%;
     }
     h3 {
       padding-left: 0;
     }
   }
   @media (min-width: 52em) {
+    padding: 18vh 0vw 0 0vw;
     h1 {
       font-size: 440%;
     }
@@ -104,6 +105,15 @@ const CurrentIssue = styled.div`
     margin-bottom: 0.2rem;
   }
   @media (min-width: 40em) {
+    bottom: 20vh;
+    width: 70%;
+    p {
+      font-size: 1.3em;
+    }
+    /* padding: 7vh 0 0 0; */
+    bottom: 15vh;
+  }
+  @media (min-width: 52em) {
     bottom: 20vh;
     width: 70%;
     p {
