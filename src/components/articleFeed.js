@@ -131,7 +131,7 @@ const ArticleFeed = ({ articles }) => {
             <Box
               p={[1, 2, 2]}
               fontSize={4}
-              width={[1, 1 / 2, 1 / 4, 1 / 5]}
+              width={[1, 1 / 2, 1 / 4]}
               color="white"
               // bg="lightgrey"
               // flex="1 1 auto"

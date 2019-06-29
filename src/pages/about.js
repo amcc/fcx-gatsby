@@ -36,6 +36,7 @@ const AboutText = styled.div`
   z-index: 20;
   height: 100%;
   width: 100%;
+  margin-bottom: 30vh;
 `
 const Overlay = styled.div`
   position: absolute;

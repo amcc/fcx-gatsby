@@ -77,5 +77,20 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://fcx.netlify.com",
+        sitemap: "https://fcx.netlify.com/sitemap.xml",
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }]
+          },
+          production: {
+            policy: [{ userAgent: "*", disallow: "/" }]
+          }
+        }
+      }
+    }
   ],
 }
