@@ -4,6 +4,7 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://fcx.netlify.com',
     title: `FCX`,
     description: `Fashion Communication Exchange, London College of Fashion, University of the Arts London`,
     author: `@amcc`,
@@ -82,14 +83,7 @@ module.exports = {
       options: {
         host: "https://fcx.netlify.com",
         sitemap: "https://fcx.netlify.com/sitemap.xml",
-        env: {
-          development: {
-            policy: [{ userAgent: "*", disallow: ["/"] }]
-          },
-          production: {
-            policy: [{ userAgent: "*", disallow: "/" }]
-          }
-        }
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     }
   ],
