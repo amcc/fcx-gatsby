@@ -20,6 +20,7 @@ module.exports = {
         theme_color: `#a2466c`,
         display: `standalone`,
         crossOrigin: `use-credentials`,
+        icon: `./B1D7350A-96E7-4581-8F4A-3710C1515695.jpeg,
       },
     },
     `gatsby-plugin-react-helmet`,
