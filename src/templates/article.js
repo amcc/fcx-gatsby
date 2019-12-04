@@ -24,7 +24,6 @@ const IssueImage = css`
 `
 const ArticleTemplate = ({ data }) => {
   const article = data.nodeArticle
-console.log(article)
   return (
     <Layout>
       <SEO title={`FCX | ` + article.title} />
@@ -32,7 +31,7 @@ console.log(article)
         <Flex
           // mx={[0, -1, -2]}
           flexWrap="wrap"
-          px={[2,0]}
+          px={[2, 0]}
         >
           <Box width={[1 / 2]} px={[0, 1, 2]} color={`black`}>
             <Link to={`/feed/`}>BACK TO FEED</Link>
@@ -47,7 +46,7 @@ console.log(article)
         flexWrap="wrap"
         justifyContent="space-between"
         // py={4}
-        mx={[2,4]}
+        mx={[2, 4]}
       >
         <Box width={[1]} my={[1, 2, 4]} px={[1, 3, 6]} css={Title}>
           <h1>{article.title}</h1>
@@ -76,9 +75,10 @@ console.log(article)
           )}
         </Box>
 
-        {/* <Flex flexWrap="wrap" alignItems="stretch"> */}
-        {article.relationships &&
+        {article &&
+          article.relationships &&
           article.relationships.field_article_media &&
+          article.relationships.field_article_media.relationships &&
           article.relationships.field_article_media.map(
             ({ relationships }, i) => {
               return (
@@ -114,9 +114,10 @@ console.log(article)
               )
             }
           )}
-
+          
         {article.relationships &&
           article.relationships.field_article_video &&
+          article.relationships.field_article_video[0] &&
           article.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
             (video, i) => (
               <Box p={1} fontSize={4} width={[1]}>
