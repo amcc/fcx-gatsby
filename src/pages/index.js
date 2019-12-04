@@ -194,7 +194,7 @@ class IndexPage extends Component {
           >
             <HeroTextOverlayInner>
               <Flex>
-                <Box flex="1 1 auto" alignSelf>
+                <Box flex="1 1 auto">
                   <h1 css={HomeTitle}>
                     <span css={HomeTitleFashion}>Fashion</span>
                     <span css={HomeTitleCommunication}>Communication</span>
@@ -230,8 +230,8 @@ export const pageQuery = graphql`
       }
     }
 
-    allNodeIssue(sort: { fields: [field_date], order: DESC }, limit: 1) {
-      edges {
+    allNodeIssue(sort: {order: ASC, fields: field_issue_number}, filter: {field_issue_number: {gt: 0}}, limit: 1) {
+    edges {
         node {
           id
           drupal_id

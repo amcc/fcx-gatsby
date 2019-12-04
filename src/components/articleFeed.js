@@ -67,7 +67,7 @@ const ArticleFeed = ({ articles }) => {
           // render an image, or a box //
           ///////////////////////////////
           let articleBox
-          if (node.relationships.field_article_media) {
+          if (node.relationships.field_article_media && node.relationships.field_article_media[0]) {
             articleBox = (
               <Img
                 key={
@@ -135,7 +135,7 @@ const ArticleFeed = ({ articles }) => {
               color="white"
               // bg="lightgrey"
               // flex="1 1 auto"
-              alignSelf
+              // alignSelf
               key={i}
               css={[FlexArticle, GridBoxContainer, ArticleLink]}
             >

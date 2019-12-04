@@ -44,7 +44,7 @@ const IssueFeed = ({ issues }) => {
           ///////////////////////////////
 
           let articleBox
-          if (node.relationships.field_issue_media) {
+          if (node.relationships.field_issue_media && node.relationships.field_issue_media[0]) {
             articleBox = (
               <Img
                 key={
@@ -101,7 +101,7 @@ const IssueFeed = ({ issues }) => {
               color="white"
               // bg="lightgrey"
               // flex="1 1 auto"
-              alignSelf
+              // alignSelf
               key={i}
               css={[FlexArticle, GridBoxContainer, ArticleLink]}
             >

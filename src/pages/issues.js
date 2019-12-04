@@ -30,8 +30,8 @@ export default Issues
 
 export const pageQuery = graphql`
   query {
-    allNodeIssue(sort: { fields: [field_date], order: DESC }, limit: 20) {
-      edges {
+    allNodeIssue(sort: {order: ASC, fields: field_issue_number}, filter: {field_issue_number: {gt: 0}}, limit: 20) {
+    edges {
         node {
           ...IssueFeed
         }

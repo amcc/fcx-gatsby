@@ -89,7 +89,7 @@ console.log(article)
                   color="white"
                   // bg="lightgrey"
                   // flex="1 1 auto"
-                  alignSelf
+                  // alignSelf
                   css={css`
                     /* max-height: 300px; */
                   `}
