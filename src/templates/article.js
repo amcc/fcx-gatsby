@@ -24,7 +24,7 @@ const IssueImage = css`
 `
 const ArticleTemplate = ({ data }) => {
   const article = data.nodeArticle
-
+console.log(article)
   return (
     <Layout>
       <SEO title={`FCX | ` + article.title} />
