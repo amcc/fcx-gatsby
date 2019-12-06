@@ -72,7 +72,7 @@ class About extends Component {
     // const data = this.props.data
     return (
       <Layout>
-        <SEO title="Issues" />
+        <SEO title="About" />
         <HomeVideo video="/fcx-video.mp4" css={AboutVideo} />
         <Overlay />
         <AboutText>
