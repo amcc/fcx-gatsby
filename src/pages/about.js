@@ -73,7 +73,7 @@ class About extends Component {
     return (
       <Layout>
         <SEO title="Issues" />
-        <HomeVideo video="fcx-video.mp4" css={AboutVideo} />
+        <HomeVideo video="/fcx-video.mp4" css={AboutVideo} />
         <Overlay />
         <AboutText>
           <Flex mx={[0, -2, -2]} flexWrap="wrap">
