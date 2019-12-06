@@ -55,8 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        // baseUrl: `http://fcxdrupal.test/`,
-        disallowedLinkTypes: [`self`, `describedby`],
+        baseUrl: `http://fcxdrupal.test/`,
+        // disallowedLinkTypes: [`self`, `describedby`],
         baseUrl: `http://fcx.mcclymont.co/`,
         // apiBase: `jsonapi`,
         // links: {

@@ -54,7 +54,7 @@ const Overlay = styled.div`
   );
   height: 120vh;
   @media (min-width: 40em) {
-    height: 100vh;
+    /* height: 100vh; */
   }
   width: 100vw;
   margin-left: calc(50% - 50vw);
