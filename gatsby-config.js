@@ -4,7 +4,7 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://fcx.netlify.com',
+    siteUrl: "https://fcx.netlify.com",
     title: `FCX`,
     description: `Fashion Communication Exchange, London College of Fashion, University of the Arts London`,
     author: `@amcc`,
@@ -57,7 +57,7 @@ module.exports = {
       options: {
         baseUrl: `http://fcxdrupal.test/`,
         // disallowedLinkTypes: [`self`, `describedby`],
-        baseUrl: `http://fcx.mcclymont.co/`,
+        // baseUrl: `http://fcx.mcclymont.co/`,
         // apiBase: `jsonapi`,
         // links: {
         //   article: "http://fcxdrupal.test/jsonapi/node/article",
@@ -85,8 +85,8 @@ module.exports = {
       options: {
         host: "https://fcx.netlify.com",
         sitemap: "https://fcx.netlify.com/sitemap.xml",
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
-    }
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
   ],
 }

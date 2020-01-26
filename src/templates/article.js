@@ -114,21 +114,30 @@ const ArticleTemplate = ({ data }) => {
               )
             }
           )}
-          
+        {console.log("oioioi", article.relationships.field_article_video)}
         {article.relationships &&
           article.relationships.field_article_video &&
           article.relationships.field_article_video[0] &&
-          article.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
-            (video, i) => (
-              <Box p={1} fontSize={4} width={[1]}>
-                <Video
-                  videoSrcURL={video.field_media_oembed_video}
-                  videoTitle={video.name}
-                  key={video.id}
-                />
-              </Box>
-            )
-          )}
+          // article.relationships.field_article_video[0].relationships.bundle.relationships.media__remote_video.map(
+          //   (video, i) => (
+          //     <Box p={1} fontSize={4} width={[1]} key={i}>
+          //       <Video
+          //         videoSrcURL={video.field_media_oembed_video}
+          //         videoTitle={video.name}
+          //         key={video.id}
+          //       />
+          //     </Box>
+          //   )
+          // )}
+          article.relationships.field_article_video.map((video, i) => (
+            <Box p={1} fontSize={4} width={[1]} key={i}>
+              <Video
+                videoSrcURL={video.field_media_oembed_video}
+                videoTitle={video.name}
+                key={video.id}
+              />
+            </Box>
+          ))}
         <Box width={[1]} px={[1, 2, 4]} my={4}>
           <Box width={[1, 1 / 2]}>
             {article.body && (
@@ -159,6 +168,8 @@ export const query = graphql`
       field_date(formatString: "MMMM YYYY")
       relationships {
         field_article_video {
+          field_media_oembed_video
+          name
           relationships {
             bundle {
               relationships {
