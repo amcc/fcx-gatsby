@@ -114,7 +114,6 @@ const ArticleTemplate = ({ data }) => {
               )
             }
           )}
-        {console.log("oioioi", article.relationships.field_article_video)}
         {article.relationships &&
           article.relationships.field_article_video &&
           article.relationships.field_article_video[0] &&
