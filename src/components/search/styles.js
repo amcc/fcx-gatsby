@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import { Search } from "styled-icons/fa-solid/Search"
+import { Search } from "@styled-icons/fa-solid/Search"
+
 // import { Algolia } from "styled-icons/fa-brands/Algolia"
 // import { rhythm } from "../../utils/typography"
 
@@ -11,7 +12,7 @@ const gray = `gray`
 const darkGray = `darkGray`
 const lightGray = `lightGray`
 const veryLightGray = `#efefef`
-const smallBorderRadius = `3px`;
+const smallBorderRadius = `3px`
 
 export const Root = styled.div`
   position: relative;
@@ -67,10 +68,10 @@ export const Input = styled.input`
   background: transparent;
   transition: all 0.5s;
   border-radius: ${smallBorderRadius};
-  ${props => props.collapse ? collapse : expand};
-  ${props => props.focus && focus}
-  margin-left: ${props => props.focus ? `-1.6em` : `-1em`};
-  padding-left: ${props => props.focus ? `1.6em` : `1em`};
+  ${(props) => (props.collapse ? collapse : expand)};
+  ${(props) => props.focus && focus}
+  margin-left: ${(props) => (props.focus ? `-1.6em` : `-1em`)};
+  padding-left: ${(props) => (props.focus ? `1.6em` : `1em`)};
 `
 
 export const Form = styled.form`
@@ -80,7 +81,7 @@ export const Form = styled.form`
 `
 
 export const HitsWrapper = styled.div`
-  display: ${props => props.show ? `grid` : `none`};
+  display: ${(props) => (props.show ? `grid` : `none`)};
   max-height: 80vh;
   overflow: scroll;
   z-index: 2000;
@@ -134,6 +135,4 @@ export const HitsWrapper = styled.div`
     margin-bottom: 0.3em;
   }
 `
-export const PoweredBy = () => (
-  <span />
-)
+export const PoweredBy = () => <span />
