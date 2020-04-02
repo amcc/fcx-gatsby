@@ -97,6 +97,10 @@ exports.createPages = ({ actions, graphql }) => {
 
 // schema definitions
 // https://www.gatsbyjs.org/docs/schema-customization/#creating-type-definitions
+
+// this is really helpful
+//https://www.jamesdflynn.com/development/gatsbyjs-drupal-create-custom-graphql-schema-empty-fields
+
 // exports.createSchemaCustomization = ({ actions }) => {
 //   const { createTypes } = actions
 //   const typeDefs = `
