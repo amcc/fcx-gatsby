@@ -25,8 +25,8 @@ const Byline = css`
 `
 
 const IssueFeed = ({ issues }) => {
-  let boxCount = 1
-  let rowWidth = 0
+  // let boxCount = 1
+  // let rowWidth = 0
   return (
     <Flex
       mx={[0, -2, -2]}
@@ -44,7 +44,10 @@ const IssueFeed = ({ issues }) => {
           ///////////////////////////////
 
           let articleBox
-          if (node.relationships.field_issue_media && node.relationships.field_issue_media[0]) {
+          if (
+            node.relationships.field_issue_media &&
+            node.relationships.field_issue_media[0]
+          ) {
             articleBox = (
               <Img
                 key={

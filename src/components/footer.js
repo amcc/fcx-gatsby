@@ -1,6 +1,6 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
+// import Img from "gatsby-image"
 import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
 import { rhythm } from "../utils/typography"
 import { css } from "@emotion/core"
@@ -75,7 +75,7 @@ const Footer = () => {
               `}
             >
               <img
-              css={FCXlogo}
+                css={FCXlogo}
                 src="/fcx-logo-white.png"
                 alt="fashion Communication Exchange"
               />

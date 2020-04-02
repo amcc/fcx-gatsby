@@ -1,10 +1,8 @@
 import React, { Component } from "react"
-import { graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Flex, Box } from "@rebass/grid/emotion" //https://github.com/rebassjs/grid
-import { rhythm } from "../utils/typography"
+// import { rhythm } from "../utils/typography"
 import { css } from "@emotion/core"
 import {
   HeaderOffset,
@@ -111,12 +109,16 @@ class About extends Component {
               </p>
               <p>
                 For editorial enquiries contact: Charlotte Troy <br />
-                <a href="mailto:c.troy@fashion.arts.ac.uk">c.troy@fashion.arts.ac.uk</a>
+                <a href="mailto:c.troy@fashion.arts.ac.uk">
+                  c.troy@fashion.arts.ac.uk
+                </a>
                 <br />
                 For collaborative opportunities contact: Daniel
                 Caulfield-Sriklad
                 <br />
-                <a href="mailto:d.caulfieldsriklad@fashion.arts.ac.uk">d.caulfieldsriklad@fashion.arts.ac.uk</a>
+                <a href="mailto:d.caulfieldsriklad@fashion.arts.ac.uk">
+                  d.caulfieldsriklad@fashion.arts.ac.uk
+                </a>
               </p>
             </Box>
             <Box

@@ -4,12 +4,12 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { Flex, Box } from "@rebass/grid/emotion"
+import { Box } from "@rebass/grid/emotion"
 import ArticleFeed from "../components/articleFeed"
 
-const Row = props => <Flex {...props} mx={-3} />
+// const Row = props => <Flex {...props} mx={-3} />
 
-const Column = props => <Box {...props} px={3} flex="1 1 auto" />
+// const Column = props => <Box {...props} px={3} flex="1 1 auto" />
 
 class Feed extends Component {
   render() {

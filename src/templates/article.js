@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Video from "../components/video"
 import { Flex, Box } from "@rebass/grid/emotion"
 import { css } from "@emotion/core"
-import { HeaderBarColour, SectionHeader } from "../utils/styles"
+import { SectionHeader } from "../utils/styles"
 import { rhythm } from "../utils/typography"
 import { BiggerText } from "../utils/styles"
 

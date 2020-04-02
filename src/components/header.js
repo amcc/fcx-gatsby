@@ -9,7 +9,6 @@ import {
   Accent,
   HeaderOffset,
   HeaderOffsetMobile,
-  HeaderOffsetMobileBig,
   MainWrapper,
   SearchBox,
   HeaderBarColour,
@@ -70,7 +69,7 @@ const homeTitle = css`
     }
     @media (min-width: 52em) {
       width: 85px;
-      padding-top: 7px
+      padding-top: 7px;
     }
   }
 `

@@ -5,9 +5,9 @@ import Layout from "../components/layout"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import { css } from "@emotion/core"
-import styled from "@emotion/styled"
+// import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
-import { HeaderBarColour, SectionHeader, BiggerText } from "../utils/styles"
+import { SectionHeader, BiggerText } from "../utils/styles"
 import ArticleFeed from "../components/articleFeed"
 
 const DownloadShare = css`
@@ -37,7 +37,7 @@ const IssueTemplate = ({ data }) => {
         <Flex
           // mx={[0, -1, -2]}
           flexWrap="wrap"
-          px={[2,0]}
+          px={[2, 0]}
         >
           <Box width={[1 / 2]} px={[0, 1, 2]} color={`black`}>
             <Link to={`/issues/`}>ISSUES</Link> / ISSUE #
@@ -64,7 +64,7 @@ const IssueTemplate = ({ data }) => {
         flexWrap="wrap"
         justifyContent="space-between"
         // py={4}
-        mx={[2,4]}
+        mx={[2, 4]}
       >
         <Box width={[1]} my={[1, 2, 4]} px={[1, 3, 6]} css={Title}>
           <h1>{issue.title}</h1>
