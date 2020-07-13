@@ -86,26 +86,26 @@ class About extends Component {
             >
               <p>
                 <strong>The Fashion Communication Exchange (FCX)</strong> is a
-                digital platform where issues around fashion and fashion
-                communication are discussed across a diverse community which
-                includes: the fashion industry, UAL academics and the student
+                digital platform which responds to the zeitgeist in fashion
+                communication, media and performance through an exchange of
+                knowledge across a diverse community which includes: the fashion
+                industry, LCF alumni, UAL academics and the current student
                 body.
               </p>
               <p>
-                FCX produces an ‘Issue’ bi-annually, sharing knowledge
-                co-created by students, academics and industry around a
-                research-informed discussion, theme or trend that is pertinent
-                to the contemporary landscape of fashion communication.
+                FCX publishes an ‘Issue’ annually, sharing knowledge co-created
+                by students, academics and industry around a research-informed
+                discussion, theme or trend that is pertinent to the contemporary
+                landscape of fashion communication, media and performance.
               </p>
               <p>
-                The Feed disseminates insights, activity and related research
-                and news clustered around the common 'Issue' we are presently
+                The Feed disseminates insights, activity, related research and
+                news clustered around the common 'Issue' we are presently
                 interrogating.
               </p>
               <p>
-                FCX is moderated by the Communication Programme within the
-                School of Media and Communication, London College of Fashion,
-                UAL.
+                FCX is moderated by the School of Media and Communication,
+                London College of Fashion, UAL.
               </p>
               <p>
                 For editorial enquiries contact: Charlotte Troy <br />
@@ -129,13 +129,17 @@ class About extends Component {
             >
               <h3>WHO WE’VE COLLABORATED WITH</h3>
               <p>
-                The Centre for Sustainable Fashion, UAL
+                Superimpose Global
                 <br />
-                H&M
+                Chobham Academy
                 <br />
-                NOW Gallery
+                Pitch Studios
                 <br />
-                Phoenix Magazine
+                DVTK
+                <br />
+                Ma-tt-er
+                <br />
+                Alexander Whitley Dance Company
               </p>
             </Box>
           </Flex>
