@@ -13,12 +13,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `The Fashion Communication Exchange (FCX)`,
+        short_name: `FCX`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        background_color: `#fff`,
+        theme_color: `#000`,
         display: `standalone`,
+        icon: `src/images/fcx-favicon.png`, // This path is relative to the root of the site.
         crossOrigin: `use-credentials`,
       },
     },
