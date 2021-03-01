@@ -37,7 +37,7 @@
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.0.1",
     "styled-icons": "^10.2.1",
-    "three": "^0.115.0",
+    "three": "^0.125.0",
     "typeface-lato": "^0.0.75",
     "typeface-open-sans": "^0.0.75",
     "typeface-roboto": "^0.0.75",
